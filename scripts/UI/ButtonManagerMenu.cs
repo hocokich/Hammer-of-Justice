@@ -9,6 +9,7 @@ public class ButtonManagerMenu : MonoBehaviour
 	public class ButtonAction
 	{
 		public string buttonName;        // Имя кнопки для поиска
+		public string sceneName;		
 		public UnityEngine.Events.UnityEvent onClickAction; // Методы при нажатии
 	}
 	[Header("Настройки кнопок")]
@@ -24,7 +25,7 @@ public class ButtonManagerMenu : MonoBehaviour
 	//[SerializeField] private GameObject ActThirdPanel;
 
 	[Header("Уровни первого акта")]
-	[SerializeField] private List<ButtonAction> buttonOneLvls = new List<ButtonAction>();
+	[SerializeField] private List<ButtonAction> buttonFirstActLvls = new List<ButtonAction>();
 
 	private Dictionary<string, Button> foundButtons = new Dictionary<string, Button>();
 	private Dictionary<string, Button> foundLvls = new Dictionary<string, Button>();
@@ -45,7 +46,7 @@ public class ButtonManagerMenu : MonoBehaviour
 		}
 
 		// Для кнопок в разделе уровней первого акта
-		foreach (var buttonAction in buttonOneLvls)
+		foreach (var buttonAction in buttonFirstActLvls)
 		{
 			FindAndAssignButton(buttonAction.buttonName, buttonAction.onClickAction, foundLvls);
 		}
@@ -141,17 +142,28 @@ public class ButtonManagerMenu : MonoBehaviour
 	{
 		GameManager.Instance.LoadGame();
 
-		for (int i = 0; i < GameManager.Instance.countLvls + 1; i++)
+		for (int i = 0; i < buttonFirstActLvls.Count; i++)
 		{
-			// Получаем кнопку уровня
-			Button button = GetFoundButton(buttonOneLvls[i].buttonName);
+			Button button = GetFoundButton(buttonFirstActLvls[i].buttonName);
 
-			// Разблокируем если прошёл
-			if (button != null)
+			string sceneName = buttonFirstActLvls[i].sceneName;
+			bool isCompleted = GameManager.Instance.IsLevelCompleted(sceneName);
+
+			// Первый уровень всегда открыт, остальные — если предыдущий пройден
+			bool isUnlocked;
+			if (i == 0)
 			{
-				button.interactable = true;
+				isUnlocked = true;
 			}
+			else
+			{
+				string prevSceneName = buttonFirstActLvls[i - 1].sceneName;
+				isUnlocked = GameManager.Instance.IsLevelCompleted(prevSceneName);
+			}
+
+			button.interactable = isUnlocked;
 		}
+		Debug.Log("");
 	}
 
 	public void LoadScene(string sceneName)

@@ -14,16 +14,15 @@ public class motion : MonoBehaviour
 
 	private float horizontalInput;
 	private bool isGrounded;
+	private bool facingRight = true; // ← Направление взгляда
 
 	void Awake()
 	{
-		// Автоматически получаем Rigidbody2D если не установлен
 		if (rb == null)
 		{
 			rb = GetComponent<Rigidbody2D>();
 		}
 
-		// Создаем точку проверки земли если её нет
 		if (groundCheckPoint == null)
 		{
 			GameObject checkPoint = new GameObject("GroundCheck");
@@ -35,7 +34,6 @@ public class motion : MonoBehaviour
 
 	void Update()
 	{
-		// Получаем ввод
 		horizontalInput = 0f;
 
 		if (Input.GetKey(KeyCode.A))
@@ -47,7 +45,9 @@ public class motion : MonoBehaviour
 			horizontalInput = 1f;
 		}
 
-		// Проверка прыжка
+		// Разворот спрайта при движении
+		FlipSprite();
+
 		if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
 		{
 			rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -56,10 +56,7 @@ public class motion : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		// Проверяем землю
 		CheckGround();
-
-		// Применяем движение через Rigidbody2D
 		MoveWithRigidbody();
 	}
 
@@ -77,8 +74,28 @@ public class motion : MonoBehaviour
 		}
 		else
 		{
-			// Останавливаем горизонтальное движение при отсутствии ввода
 			rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 		}
+	}
+
+	//Разворот спрайта
+	private void FlipSprite()
+	{
+		if (horizontalInput > 0 && !facingRight)
+		{
+			Flip();
+		}
+		else if (horizontalInput < 0 && facingRight)
+		{
+			Flip();
+		}
+	}
+
+	private void Flip()
+	{
+		facingRight = !facingRight;
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
 	}
 }

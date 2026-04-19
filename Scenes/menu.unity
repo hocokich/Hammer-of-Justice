@@ -1827,7 +1827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1032843996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1845,7 +1845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -471.2}
+  m_AnchoredPosition: {x: 1027.3, y: -471.2}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032843997
@@ -2062,6 +2062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonActions:
   - buttonName: Start_Button
+    sceneName: 
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2078,6 +2079,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: BackToStart_Button
+    sceneName: 
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2094,6 +2096,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: 1_Act_Button
+    sceneName: 
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2110,6 +2113,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: BackToActs_Button
+    sceneName: 
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2127,8 +2131,9 @@ MonoBehaviour:
           m_CallState: 2
   ActsPanel: {fileID: 1436100704}
   ActOnePanel: {fileID: 855007459}
-  buttonOneLvls:
+  buttonFirstActLvls:
   - buttonName: lvl1_Button
+    sceneName: lvl1
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2145,6 +2150,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: lvl2_Button
+    sceneName: lvl2
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2161,6 +2167,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - buttonName: lvl3_Button
+    sceneName: lvl3
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -3342,9 +3349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e166d2298e8ef234bbb52cd792b9d9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countLvls: 0
-  exp: 0
-  completedLvls: []
+  totalExp: 0
+  totalRescued: 0
+  completedLevels: []
 --- !u!4 &2138938622
 Transform:
   m_ObjectHideFlags: 0
