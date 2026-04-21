@@ -1,36 +1,26 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class CivilianConditions : MonoBehaviour
 {
 	[SerializeField] private Civilian[] civilians;
 
-	private void Start()
+	private IEnumerator Start()
 	{
+		yield return null; // Ждём кадр, чтобы Civilian.Start() отработал
+
 		string sceneName = SceneManager.GetActiveScene().name;
 
-		if (GameManager.Instance.IsLevelCompleted(sceneName))
+		if (!GameManager.Instance.IsLevelCompleted(sceneName)) yield break;
+
+		List<bool> rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
+		if (rescued == null) yield break;
+
+		for (int i = 0; i < civilians.Length && i < rescued.Count; i++)
 		{
-			List<bool> rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
-
-			if (rescued != null)
-			{
-				for (int i = 0; i < civilians.Length && i < rescued.Count; i++)
-				{
-					if (rescued[i])
-					{
-						civilians[i].isRescued = true;
-
-						// Находим и разрушаем дочернюю клетку
-						CellDestroy cell = civilians[i].GetComponentInChildren<CellDestroy>();
-						if (cell != null)
-						{
-							cell.Destroy();
-						}
-					}
-				}
-			}
+			civilians[i].SetRescued(rescued[i]);
 		}
 	}
 }

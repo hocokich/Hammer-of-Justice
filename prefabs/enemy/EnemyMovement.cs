@@ -7,6 +7,11 @@ public class EnemyMovement : MonoBehaviour
 	[SerializeField] private Transform groundCheck;
 	[SerializeField] private LayerMask groundLayer;
 
+	[Header("Проверка препятствий")]
+	[SerializeField] private float wallCheckDistance = 0.6f;
+	[SerializeField] private float groundCheckDistance = 0.8f;
+	[SerializeField] private float groundCheckOffset = 0.8f;
+
 	private Rigidbody2D rb;
 	private bool movingRight = true;
 	private bool canMove = true;
@@ -31,15 +36,21 @@ public class EnemyMovement : MonoBehaviour
 
 	private bool ShouldTurn()
 	{
-		Vector2 origin = groundCheck.position;
-		Vector2 groundCheckPos = origin + new Vector2(movingRight ? 0.5f : -0.5f, 0);
-		RaycastHit2D groundInfo = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.5f, groundLayer);
+		// Проверка края платформы
+		Vector2 groundCheckPos = groundCheck.position + new Vector3(movingRight ? groundCheckOffset : -groundCheckOffset, 0, 0);
+		RaycastHit2D groundInfo = Physics2D.Raycast(groundCheckPos, Vector2.down, groundCheckDistance, groundLayer);
+		bool noGround = !groundInfo;
 
-		Vector2 wallOrigin = transform.position;
+		// Проверка стены
 		Vector2 wallDirection = movingRight ? Vector2.right : Vector2.left;
-		RaycastHit2D wallInfo = Physics2D.Raycast(wallOrigin, wallDirection, 0.6f, groundLayer);
+		RaycastHit2D wallInfo = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, groundLayer);
+		bool wallAhead = wallInfo && wallInfo.collider != null;
 
-		return !groundInfo || wallInfo;
+		// Дебаг (можно закомментировать)
+		Debug.DrawRay(groundCheckPos, Vector2.down * groundCheckDistance, noGround ? Color.red : Color.green);
+		Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, wallAhead ? Color.red : Color.blue);
+
+		return noGround || wallAhead;
 	}
 
 	private void Flip()
@@ -50,14 +61,6 @@ public class EnemyMovement : MonoBehaviour
 		transform.localScale = scale;
 	}
 
-	public void StopMovement()
-	{
-		canMove = false;
-		rb.linearVelocity = Vector2.zero;
-	}
-
-	public void ResumeMovement()
-	{
-		canMove = true;
-	}
+	public void StopMovement() => canMove = false;
+	public void ResumeMovement() => canMove = true;
 }

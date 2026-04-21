@@ -12,6 +12,7 @@ public class PlayerHealth : Health
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private float blinkInterval = 0.1f;
 
+
 	private motion movement;
 	private Attack attack;
 

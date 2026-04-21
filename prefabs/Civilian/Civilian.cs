@@ -24,11 +24,21 @@ public class Civilian : MonoBehaviour
 		UpdateIcon();
 	}
 
-	private void UpdateIcon()
+	public void SetRescued(bool rescued)
 	{
-		if (icon != null)
+		isRescued = rescued;
+
+		if (rescued)
 		{
-			icon.SetActive(isRescued);
+			CellDestroy cell = GetComponentInChildren<CellDestroy>();
+			if (cell != null) cell.Destroy();
 		}
+
+		UpdateIcon();
+	}
+
+	public void UpdateIcon()
+	{
+		if (icon != null) icon.SetActive(isRescued);
 	}
 }

@@ -3,8 +3,9 @@ using System;
 
 public class Health : MonoBehaviour
 {
-	[SerializeField] protected int maxHealth = 100;
-	protected int currentHealth;
+
+	[SerializeField] public int MaxHealth = 3;
+	public int CurrentHealth = 3;
 
 	public event Action<int, int> OnHealthChanged;
 	public event Action OnDeath;
@@ -13,20 +14,20 @@ public class Health : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		currentHealth = maxHealth;
-		OnHealthChanged?.Invoke(currentHealth, maxHealth);
+		CurrentHealth = MaxHealth;
+		OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 	}
 
 	public virtual void TakeDamage(int damage)
 	{
 		if (IsDead) return;
 
-		currentHealth -= damage;
-		OnHealthChanged?.Invoke(currentHealth, maxHealth);
+		CurrentHealth -= damage;
+		OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
-		if (currentHealth <= 0)
+		if (CurrentHealth <= 0)
 		{
-			currentHealth = 0;
+			CurrentHealth = 0;
 			IsDead = true;
 			OnDeath?.Invoke();
 		}
@@ -35,7 +36,7 @@ public class Health : MonoBehaviour
 	public virtual void Heal(int amount)
 	{
 		if (IsDead) return;
-		currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-		OnHealthChanged?.Invoke(currentHealth, maxHealth);
+		CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+		OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 	}
 }
