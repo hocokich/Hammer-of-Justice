@@ -15,10 +15,13 @@ public class ButtonManagerMenu : MonoBehaviour
 	[Header("Настройки кнопок")]
 	[SerializeField] private List<ButtonAction> buttonActions = new List<ButtonAction>();
 
+	[Header("Панель Настроек")]
+	[SerializeField] private GameObject SettingsPanel;
 	[Header("Панель актов")]
 	[SerializeField] private GameObject ActsPanel;
 	[Header("Панель 1 акт")]
 	[SerializeField] private GameObject ActOnePanel;
+
 	//[Header("Панель 2 акт")]
 	//[SerializeField] private GameObject ActSecPanel;
 	//[Header("Панель 3 акт")]
@@ -174,13 +177,32 @@ public class ButtonManagerMenu : MonoBehaviour
 	public void StartGame()
 	{
 		foundButtons["Start_Button"].gameObject.SetActive(false);
+		foundButtons["Settings_Button"].gameObject.SetActive(false);
+		foundButtons["Skills_Button"].gameObject.SetActive(false);
+		foundButtons["Achivments_Button"].gameObject.SetActive(false);
+
 		ActsPanel.SetActive(true);
 	}
+	public void OpenSettings()
+	{
+		foundButtons["Start_Button"].gameObject.SetActive(false);
+		foundButtons["Settings_Button"].gameObject.SetActive(false);
+		foundButtons["Skills_Button"].gameObject.SetActive(false);
+		foundButtons["Achivments_Button"].gameObject.SetActive(false);
+
+		SettingsPanel.SetActive(true);
+	}
+
 
 	public void BackToStart()
 	{
 		foundButtons["Start_Button"].gameObject.SetActive(true);
+		foundButtons["Settings_Button"].gameObject.SetActive(true);
+		foundButtons["Skills_Button"].gameObject.SetActive(true);
+		foundButtons["Achivments_Button"].gameObject.SetActive(true);
+
 		ActsPanel.SetActive(false);
+		SettingsPanel.SetActive(false);
 	}
 
 	public void StartAct(int i)
