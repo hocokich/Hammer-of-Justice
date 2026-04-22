@@ -14,14 +14,14 @@ public class PlayerHealth : Health
 
 
 	private motion movement;
-	private Attack attack;
+	private MeleeAttack meleeAttack;
 
 	protected override void Start()
 	{
 		base.Start();
 
 		movement = GetComponent<motion>();
-		attack = GetComponent<Attack>();
+		meleeAttack = GetComponent<MeleeAttack>();
 
 		// Подписываемся на событие смерти из базового класса
 		OnDeath += Die;
@@ -68,7 +68,7 @@ public class PlayerHealth : Health
 	{
 		// Отключаем управление
 		if (movement != null) movement.enabled = false;
-		if (attack != null) attack.enabled = false;
+		if (meleeAttack != null) meleeAttack.enabled = false;
 
 		// Перезагружаем сцену через 2 секунды
 		Invoke(nameof(RestartLevel), 2f);

@@ -1,12 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Attack : MonoBehaviour
+public class MeleeAttack : MonoBehaviour
 {
-	[Header("��������� �����")]
-	[SerializeField] private int damage = 20;
+	[Header("Настройки атаки")]
+	[SerializeField] private int damage = 1;
 	[SerializeField] private float attackCooldown = 0.3f;
 	[SerializeField] private Transform attackPoint;
-	[SerializeField] private float attackRange = 1.5f;
+	[SerializeField] private float attackRange = 2f;
 	[SerializeField] private LayerMask enemyLayer;
 
 	private float lastAttackTime = -999f;
@@ -24,6 +24,12 @@ public class Attack : MonoBehaviour
 		lastAttackTime = Time.time;
 
 		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+
+		// проверка попадания
+		if (hitEnemies.Length > 0)
+		{
+			CameraShake.Instance?.ShakeHit();
+		}
 
 		foreach (Collider2D enemy in hitEnemies)
 		{
