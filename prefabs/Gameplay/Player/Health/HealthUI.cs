@@ -1,8 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthUI : MonoBehaviour
 {
-	[SerializeField] private GameObject[] hearts;
+	[Header("Сердечки")]
+	[SerializeField] private Image[] hearts;
+
+	[Header("Спрайты")]
+	[SerializeField] private Sprite fullHeart;
+	[SerializeField] private Sprite emptyHeart;
 
 	private PlayerHealth playerHealth;
 
@@ -21,7 +27,10 @@ public class HealthUI : MonoBehaviour
 	{
 		for (int i = 0; i < hearts.Length; i++)
 		{
-			hearts[i].SetActive(i < current);
+			if (i < current)
+				hearts[i].sprite = fullHeart;
+			else
+				hearts[i].sprite = emptyHeart;
 		}
 	}
 

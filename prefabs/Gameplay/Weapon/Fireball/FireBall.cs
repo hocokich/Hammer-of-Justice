@@ -35,10 +35,13 @@ public class Fireball : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		// Пробуем получить Health напрямую
-		Health health = other.GetComponentInParent<Health>();
-		health.TakeDamage(damage);
-		CameraShake.Instance?.ShakeHit();
+		if(other.GetComponentInParent<Health>())
+		{
+			// Пробуем получить Health напрямую
+			Health health = other.GetComponentInParent<Health>();
+			health.TakeDamage(damage);
+			CameraShake.Instance?.ShakeHit();
+		}
 
 		Destroy(gameObject);
 	}

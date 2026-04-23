@@ -56,9 +56,10 @@ public class EnemyMovement : MonoBehaviour
 	private void Flip()
 	{
 		movingRight = !movingRight;
-		Vector3 scale = transform.localScale;
-		scale.x *= -1;
-		transform.localScale = scale;
+		// Переворачиваем только спрайт, а не весь объект
+		SpriteRenderer sr = GetComponent<SpriteRenderer>();
+		if (sr != null)
+			sr.flipX = !sr.flipX;
 	}
 
 	public void StopMovement() => canMove = false;
