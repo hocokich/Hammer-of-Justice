@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyHorizontalMovement : MonoBehaviour
 {
 	[Header("Настройки движения")]
 	[SerializeField] private float moveSpeed = 2f;
@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
 		if (!canMove) return;
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHealthBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
 	[SerializeField] private Transform fillBar;
 	[SerializeField] private float fadeDuration = 0.5f;

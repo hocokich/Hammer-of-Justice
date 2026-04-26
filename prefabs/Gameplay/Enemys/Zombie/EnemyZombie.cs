@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyZombie : MonoBehaviour
 {
 	[Header("Настройки")]
 	[SerializeField] private int damage = 1;
 
 	private Health health;
-	private EnemyMovement movement;
+	private EnemyHorizontalMovement movement;
 
 	private void Start()
 	{
 		health = GetComponent<Health>();
-		movement = GetComponent<EnemyMovement>();
+		movement = GetComponent<EnemyHorizontalMovement>();
 
 		if (health != null)
 		{
