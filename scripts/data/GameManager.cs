@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	public int totalExp = 0;
+	public int totalCoins = 0;
 	public int totalRescued = 0;
 	public List<LevelSaveData> completedLevels = new List<LevelSaveData>();
 
@@ -29,65 +28,37 @@ public class GameManager : MonoBehaviour
 	private void Start()
 	{
 		LoadGame();
-		Debug.Log($"Загружено: Опыт={totalExp}, Спасено={totalRescued}, Уровней={completedLevels.Count}");
 	}
 
-	// Вызывается из LevelManager при завершении уровня
-
-	public bool IsLevelCompleted(string sceneName)
+	// Потратить монеты (для прокачки)
+	public bool SpendCoins(int amount)
 	{
-		return completedLevels.Exists(l => l.sceneName == sceneName);
+		if (totalCoins >= amount)
+		{
+			totalCoins -= amount;
+			SaveGame();
+			return true;
+		}
+		return false;
 	}
 
-	// Нужно при перепрохождении уровня
+	// Сохранить данные уровня при завершении
 	public void SaveLevelData(LevelSaveData levelData)
 	{
 		LevelSaveData existing = completedLevels.Find(l => l.sceneName == levelData.sceneName);
 
 		if (existing != null)
 		{
-			// Считаем, сколько было спасено раньше
-			int oldRescued = 0;
-			if (existing.rescued != null)
-			{
-				foreach (bool r in existing.rescued) if (r) oldRescued++;
-			}
-
-			// Считаем, сколько спасено сейчас
-			int newRescued = 0;
-			foreach (bool r in levelData.rescued) if (r) newRescued++;
-
-			// Начисляем опыт только за НОВЫХ спасённых
-			int extraRescued = newRescued - oldRescued;
-			if (extraRescued > 0)
-			{
-				int extraExp = extraRescued * 20;
-				totalExp += extraExp;
-				levelData.expEarned = existing.expEarned + extraExp;
-				Debug.Log($"Дополнительно спасено {extraRescued} жителей! +{extraExp} опыта");
-			}
-			else
-			{
-				levelData.expEarned = existing.expEarned;
-			}
-
-			// Обновляем данные
 			existing.rescued = levelData.rescued;
-			existing.expEarned = levelData.expEarned;
-
-			Debug.Log($"Уровень {levelData.sceneName} обновлён. Спасено: {newRescued}");
+			existing.coinsEarned = levelData.coinsEarned;
 		}
 		else
 		{
-			// Первое прохождение
-			int rescuedCount = 0;
-			foreach (bool r in levelData.rescued) if (r) rescuedCount++;
-
 			completedLevels.Add(levelData);
-			totalExp += levelData.expEarned;
-
-			Debug.Log($"Уровень {levelData.sceneName} пройден впервые! Спасено: {rescuedCount}, Опыт: +{levelData.expEarned}");
 		}
+
+		// Переносим монеты уровня в общий счёт
+		totalCoins += levelData.coinsEarned;
 
 		RecalculateTotalRescued();
 		SaveGame();
@@ -99,16 +70,16 @@ public class GameManager : MonoBehaviour
 		foreach (var level in completedLevels)
 		{
 			if (level.rescued != null)
-			{
 				foreach (bool r in level.rescued)
-				{
 					if (r) totalRescued++;
-				}
-			}
 		}
 	}
 
-	// При загрузке уровня берет информацию о спасенных жителях
+	public bool IsLevelCompleted(string sceneName)
+	{
+		return completedLevels.Exists(l => l.sceneName == sceneName);
+	}
+
 	public List<bool> GetRescuedForLevel(string sceneName)
 	{
 		LevelSaveData data = completedLevels.Find(l => l.sceneName == sceneName);
@@ -119,7 +90,7 @@ public class GameManager : MonoBehaviour
 	{
 		SaveData data = new SaveData
 		{
-			totalExp = this.totalExp,
+			totalCoins = this.totalCoins,
 			totalRescued = this.totalRescued,
 			completedLevels = this.completedLevels
 		};
@@ -135,7 +106,7 @@ public class GameManager : MonoBehaviour
 			string json = File.ReadAllText(saveFilePath);
 			SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-			totalExp = data.totalExp;
+			totalCoins = data.totalCoins;
 			totalRescued = data.totalRescued;
 			completedLevels = data.completedLevels ?? new List<LevelSaveData>();
 		}
@@ -143,19 +114,14 @@ public class GameManager : MonoBehaviour
 
 	public void ResetProgress()
 	{
-		// Удаляем файл
 		if (File.Exists(saveFilePath))
 			File.Delete(saveFilePath);
 
-		// Сбрасываем данные в ТЕКУЩЕМ GameManager
-		totalExp = 0;
+		totalCoins = 0;
 		totalRescued = 0;
 		completedLevels.Clear();
 
-		// Сохраняем пустое состояние (создаст новый файл с нулями)
 		SaveGame();
-
-		// Загружаем сцену 0
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
@@ -164,7 +130,7 @@ public class GameManager : MonoBehaviour
 	[System.Serializable]
 	private class SaveData
 	{
-		public int totalExp;
+		public int totalCoins;
 		public int totalRescued;
 		public List<LevelSaveData> completedLevels;
 	}
@@ -177,5 +143,5 @@ public class LevelSaveData
 	public int actNumber;
 	public int levelNumber;
 	public List<bool> rescued;
-	public int expEarned;
+	public int coinsEarned; // Сколько монет собрано на уровне
 }

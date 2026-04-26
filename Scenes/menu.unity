@@ -3027,6 +3027,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1155546167}
     m_Modifications:
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_text
+      value: SKILLS
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4046336627854432551, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3107,33 +3131,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_SpriteState.m_PressedSprite
-      value: 
-      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_SpriteState.m_DisabledSprite
-      value: 
-      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
     - target: {fileID: 5031134380634967641, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Name
-      value: Button short
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_text
-      value: SKILLS
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_fontSize
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 25
+      value: Skills_Button
       objectReference: {fileID: 0}
     - target: {fileID: 8368865657341960763, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Sprite
@@ -3370,6 +3370,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1155546167}
     m_Modifications:
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
+    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_SpriteState.m_DisabledSprite
+      value: 
+      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_text
+      value: ACHIVE
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4046336627854432551, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3450,33 +3474,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_SpriteState.m_PressedSprite
-      value: 
-      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
-    - target: {fileID: 1212351207807029161, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_SpriteState.m_DisabledSprite
-      value: 
-      objectReference: {fileID: -1048392978411666968, guid: b777a1764ce3c454f9b1fd1b8294f785, type: 3}
     - target: {fileID: 5031134380634967641, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Name
-      value: Button short (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_text
-      value: ACHIVE
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_fontSize
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548091404895938431, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 25
+      value: Achivments_Button
       objectReference: {fileID: 0}
     - target: {fileID: 8368865657341960763, guid: c39bdb85251500f44b64f3cf4ab45141, type: 3}
       propertyPath: m_Sprite
@@ -3516,7 +3516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e166d2298e8ef234bbb52cd792b9d9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalExp: 0
+  totalCoins: 0
   totalRescued: 0
   completedLevels: []
 --- !u!4 &2138938622
