@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
 
 	public void CompleteLevel()
 	{
+		GetComponent<Pause>().PauseGame();
+
 		if (isCompleted) return;
 		isCompleted = true;
 
@@ -39,6 +41,5 @@ public class LevelManager : MonoBehaviour
 		};
 
 		GameManager.Instance.SaveLevelData(data);
-		GetComponent<Pause>().PauseGame();
 	}
 }

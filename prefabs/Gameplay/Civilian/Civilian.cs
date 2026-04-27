@@ -1,11 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Civilian : MonoBehaviour
 {
 	public bool isRescued = false;
 
 	[Header("»конка в UI")]
-	[SerializeField] private GameObject icon; // »конка этого жител€ в UI
+	[SerializeField] private Image icon;
+	[SerializeField] private Sprite spriteCaged;
+	[SerializeField] private Sprite spriteRescued;
+
+	private void Start()
+	{
+		UpdateIcon();
+	}
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
@@ -14,7 +22,6 @@ public class Civilian : MonoBehaviour
 		if (other.CompareTag("Player"))
 		{
 			Rescue();
-			icon.SetActive(isRescued);
 		}
 	}
 
@@ -39,6 +46,7 @@ public class Civilian : MonoBehaviour
 
 	public void UpdateIcon()
 	{
-		if (icon != null) icon.SetActive(isRescued);
+		if (icon != null)
+			icon.sprite = isRescued ? spriteRescued : spriteCaged;
 	}
 }
