@@ -3,10 +3,23 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 	[SerializeField] private int value = 1;
+	[SerializeField] private float bounceForce = 2f;
+	[SerializeField] private float sideForce = 1f;
 
-	private void OnTriggerEnter2D(Collider2D other)
+	private Rigidbody2D rb;
+
+	private void Start()
 	{
-		if (other.CompareTag("Player"))
+		rb = GetComponent<Rigidbody2D>();
+
+		float randomX = Random.Range(-sideForce, sideForce);
+		rb.linearVelocity = new Vector2(randomX, -bounceForce);
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("Player"))
 		{
 			CoinManager.Instance.CollectedCoin(value);
 			Destroy(gameObject);

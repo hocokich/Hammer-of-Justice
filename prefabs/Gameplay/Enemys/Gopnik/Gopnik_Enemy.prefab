@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 3279371726434672302}
   - component: {fileID: -1978030540704947073}
   - component: {fileID: 2982036062933294192}
+  - component: {fileID: 6777561310034900884}
   - component: {fileID: 7261747921485981686}
   m_Layer: 7
   m_Name: Gopnik_Enemy
@@ -167,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4589959988736792871}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.51, y: 12.06, z: 0}
   m_LocalScale: {x: 1, y: 0.7497626, z: 1}
   m_ConstrainProportionsScale: 0
@@ -333,6 +334,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3
   CurrentHealth: 3
+--- !u!114 &6777561310034900884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589959988736792871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9794f1174e2b7ad44865cedbd2ce0301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
+  heartChance: 15
+  coins:
+  - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
+    chance: 50
+  - prefab: {fileID: 4707272597320976454, guid: 9744c576e9514694a93b0182d99a9934, type: 3}
+    chance: 25
+  - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
+    chance: 10
 --- !u!95 &7261747921485981686
 Animator:
   serializedVersion: 7

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5829050911401184658}
   - component: {fileID: 2529896627207973738}
   - component: {fileID: 5618325630385037825}
+  - component: {fileID: 7342256919479476250}
   - component: {fileID: 3656214303710013229}
   m_Layer: 7
   m_Name: Bug_Enemy
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940958074340592916}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 59.39, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 0.7497626, z: 1}
   m_ConstrainProportionsScale: 0
@@ -194,8 +195,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e45ae8f35b41e6488fe04f23020e384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  moveDistance: 3
+  moveDistance: 4.5
+--- !u!114 &7342256919479476250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940958074340592916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9794f1174e2b7ad44865cedbd2ce0301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
+  heartChance: 15
+  coins:
+  - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
+    chance: 50
+  - prefab: {fileID: 4707272597320976454, guid: 9744c576e9514694a93b0182d99a9934, type: 3}
+    chance: 25
+  - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
+    chance: 10
 --- !u!95 &3656214303710013229
 Animator:
   serializedVersion: 7

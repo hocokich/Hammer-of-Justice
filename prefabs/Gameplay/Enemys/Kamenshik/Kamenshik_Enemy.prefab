@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2080917765841799994}
   - component: {fileID: 6560343736480829053}
   - component: {fileID: 7315697135247841662}
+  - component: {fileID: 8815767263556759678}
   - component: {fileID: -84585261989273295}
   m_Layer: 7
   m_Name: Kamenshik_Enemy
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687643888593701571}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.77, y: 23.05, z: 0}
   m_LocalScale: {x: 1, y: 0.7497626, z: 1}
   m_ConstrainProportionsScale: 0
@@ -149,7 +150,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6687643888593701571}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -194,11 +195,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b741cbf90dce0e9449b83d4a3f34847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   stonePrefab: {fileID: 6788302905547829138, guid: 7f3a1d37a556a4a4b96a77a2ee90b459, type: 3}
   throwPoint: {fileID: 1095279863051834694}
   throwForceX: 4
   throwForceY: 6
+--- !u!114 &8815767263556759678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687643888593701571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9794f1174e2b7ad44865cedbd2ce0301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
+  heartChance: 15
+  coins:
+  - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
+    chance: 50
+  - prefab: {fileID: 4707272597320976454, guid: 9744c576e9514694a93b0182d99a9934, type: 3}
+    chance: 25
+  - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
+    chance: 10
 --- !u!95 &-84585261989273295
 Animator:
   serializedVersion: 7

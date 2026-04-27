@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class ButtonManagerMenu : MonoBehaviour
 	[Header("Настройки кнопок")]
 	[SerializeField] private List<ButtonAction> buttonActions = new List<ButtonAction>();
 
+	[Header("Панель Настроек")]
+	[SerializeField] private GameObject StartPanel;
 	[Header("Панель Настроек")]
 	[SerializeField] private GameObject SettingsPanel;
 	[Header("Панель актов")]
@@ -35,6 +38,8 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	void Start()
 	{
+		Time.timeScale = 1f;
+
 		FindAndAssignAllButtons();
 
 		OpenedLvls();
@@ -80,7 +85,7 @@ public class ButtonManagerMenu : MonoBehaviour
 				targetDictionary.Add(buttonName, button);
 			}
 
-			Debug.Log($"Кнопка '{buttonName}' найдена и сохранена в {(targetDictionary == foundLvls ? "foundLvls" : "foundButtons")}");
+			//Debug.Log($"Кнопка '{buttonName}' найдена и сохранена в {(targetDictionary == foundLvls ? "foundLvls" : "foundButtons")}");
 		}
 		else
 		{
@@ -166,7 +171,6 @@ public class ButtonManagerMenu : MonoBehaviour
 
 			button.interactable = isUnlocked;
 		}
-		Debug.Log("");
 	}
 
 	public void LoadScene(string sceneName)
@@ -176,33 +180,40 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	public void StartGame()
 	{
-		foundButtons["Start_Button"].gameObject.SetActive(false);
-		foundButtons["Settings_Button"].gameObject.SetActive(false);
-		foundButtons["Skills_Button"].gameObject.SetActive(false);
-		foundButtons["Achivments_Button"].gameObject.SetActive(false);
-
-		ActsPanel.SetActive(true);
+		StartPanel.GetComponent<UIFader>().FadeOut(()=>
+		{
+			ActsPanel.GetComponent<UIFader>().FadeInFromHidden();
+		});
 	}
 	public void OpenSettings()
 	{
-		foundButtons["Start_Button"].gameObject.SetActive(false);
-		foundButtons["Settings_Button"].gameObject.SetActive(false);
-		foundButtons["Skills_Button"].gameObject.SetActive(false);
-		foundButtons["Achivments_Button"].gameObject.SetActive(false);
-
-		SettingsPanel.SetActive(true);
+		StartPanel.GetComponent<UIFader>().FadeOut(()=>
+		{
+			SettingsPanel.GetComponent<UIFader>().FadeInFromHidden();
+		});
 	}
-
 
 	public void BackToStart()
 	{
-		foundButtons["Start_Button"].gameObject.SetActive(true);
-		foundButtons["Settings_Button"].gameObject.SetActive(true);
-		foundButtons["Skills_Button"].gameObject.SetActive(true);
-		foundButtons["Achivments_Button"].gameObject.SetActive(true);
+		try
+		{
+			ActsPanel.GetComponent<UIFader>().FadeOut(() =>
+			{
+				StartPanel.GetComponent<UIFader>().FadeInFromHidden();
+			});
+		}
+		catch (Exception ex)
+		{
+			//Debug.LogException(ex);
+		}
+		finally
+		{
+			SettingsPanel.GetComponent<UIFader>().FadeOut(() =>
+			{
+				StartPanel.GetComponent<UIFader>().FadeInFromHidden();
+			});
+		}
 
-		ActsPanel.SetActive(false);
-		SettingsPanel.SetActive(false);
 	}
 
 	public void StartAct(int i)
@@ -210,18 +221,24 @@ public class ButtonManagerMenu : MonoBehaviour
 		switch (i)
 		{
 			case 1:
-				ActsPanel.SetActive(false);
-				ActOnePanel.SetActive(true);
+				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
+				{
+					ActOnePanel.GetComponent<UIFader>().FadeInFromHidden();
+				});
 				break;
 
 			case 2:
-				ActsPanel.SetActive(false);
-				//ActSecPanel.SetActive(true);
+				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
+				{
+					//ActSecPanel.GetComponent<UIFader>().FadeInFromHidden();
+				});
 				break;
 
 			case 3:
-				ActsPanel.SetActive(false);
-				//ActThirdPanel.SetActive(true);
+				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
+				{
+					//ActThirdPanel.GetComponent<UIFader>().FadeInFromHidden();
+				});
 				break;
 
 			default:
@@ -232,11 +249,11 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	public void BackToActs()
 	{
-		ActOnePanel.SetActive(false);
-		//ActSecPanel.SetActive(false);
-		//ActThirdPanel.SetActive(false);
+		ActOnePanel.GetComponent<UIFader>().FadeOut(()=>
+		{
+			ActsPanel.GetComponent<UIFader>().FadeInFromHidden();
+		});
 
-		ActsPanel.SetActive(true);
 	}
 
 	public void QuitGame()

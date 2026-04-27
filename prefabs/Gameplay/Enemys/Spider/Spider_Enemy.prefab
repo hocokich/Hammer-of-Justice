@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2690672408306062317}
   - component: {fileID: 6592122135470467067}
   - component: {fileID: 331042683382983316}
+  - component: {fileID: 4026443136969095096}
   - component: {fileID: 7605686343957718909}
   m_Layer: 7
   m_Name: Spider_Enemy
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2599864365530496703}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.35, y: 6.85, z: 0}
   m_LocalScale: {x: 1, y: 0.7497626, z: 1}
   m_ConstrainProportionsScale: 0
@@ -180,7 +181,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa7ef807a8ae5141ae46d9d74d5127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  dropDistance: 5
+  springCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.04728125
+      value: 0.0023089647
+      inSlope: 9.312232
+      outSlope: 9.312232
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15441895
+      value: 1
+      inSlope: -0.00041873156
+      outSlope: -0.00041873156
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.6791667
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.2512232
+      value: 0.7492073
+      inSlope: -0.0033361476
+      outSlope: -0.0033361476
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3878404
+      value: 0.9297185
+      inSlope: -0.01854606
+      outSlope: -0.01854606
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.2639527
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.59234273
+      value: 0.53034127
+      inSlope: -2.0754383
+      outSlope: -2.0754383
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.32086816
+      outWeight: 0.30558303
+    - serializedVersion: 3
+      time: 1.0040762
+      value: -0.00002861768
+      inSlope: 0.23121698
+      outSlope: 0.23121698
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.8064197
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &331042683382983316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +256,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2
   CurrentHealth: 2
+--- !u!114 &4026443136969095096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599864365530496703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9794f1174e2b7ad44865cedbd2ce0301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
+  heartChance: 15
+  coins:
+  - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
+    chance: 50
+  - prefab: {fileID: 4707272597320976454, guid: 9744c576e9514694a93b0182d99a9934, type: 3}
+    chance: 25
+  - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
+    chance: 10
 --- !u!95 &7605686343957718909
 Animator:
   serializedVersion: 7

@@ -3,17 +3,24 @@
 public class EnemyBug : MonoBehaviour
 {
 	[Header("Настройки")]
-	[SerializeField] private float moveDistance = 3f; // Дистанция движения вверх-вниз
+	[SerializeField] private float moveDistance = 3f;
 
 	private Health health;
 	private Animator animator;
+	private Rigidbody2D rb;
 	private Vector3 startPos;
+	private float animTime;
 
 	private void Start()
 	{
 		health = GetComponent<Health>();
 		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody2D>();
 		startPos = transform.position;
+
+		// Отключаем гравитацию
+		rb.gravityScale = 0;
+		rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
 
 		if (health != null)
 			health.OnDeath += Die;
@@ -23,13 +30,15 @@ public class EnemyBug : MonoBehaviour
 	{
 		if (animator == null) return;
 
-		// Получаем прогресс зацикленной анимации
-		float t = animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f;
+		// Плавно считаем время анимации
+		animTime += Time.fixedDeltaTime;
+		float cycleTime = animator.GetCurrentAnimatorStateInfo(0).length;
+		float t = (animTime % cycleTime) / cycleTime;
 
-		// Превращаем в движение по синусоиде: 0 = верх, 0.5 = низ, 1 = верх
 		float yOffset = Mathf.Sin(t * Mathf.PI * 2) * moveDistance * 0.5f;
 
-		transform.position = new Vector3(startPos.x, startPos.y + yOffset, startPos.z);
+		Vector2 targetPos = new Vector2(startPos.x, startPos.y + yOffset);
+		rb.MovePosition(targetPos);
 	}
 
 	private void Die()
