@@ -13,7 +13,7 @@ public class CivilianConditions : MonoBehaviour
 
 		string sceneName = SceneManager.GetActiveScene().name;
 
-		if (!GameManager.Instance.IsLevelCompleted(sceneName)) yield break;
+		if (!GameManager.Instance.IsLevelCompleted(sceneName)) yield break;	
 
 		List<bool> rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
 		if (rescued == null) yield break;

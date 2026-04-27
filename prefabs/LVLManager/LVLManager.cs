@@ -40,6 +40,7 @@ public class LevelManager : MonoBehaviour
 			coinsEarned = CoinManager.Instance != null ? CoinManager.Instance.coinsCollected : 0
 		};
 
+		CoinManager.Instance.UpdateCoinsPerLvl();
 		GameManager.Instance.SaveLevelData(data);
 	}
 }
