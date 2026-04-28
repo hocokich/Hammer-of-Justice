@@ -57,7 +57,7 @@ public class ButtonManager : MonoBehaviour
 				foundButtons.Add(buttonName, button);
 			}
 
-			Debug.Log($"Кнопка '{buttonName}' найдена и настроена");
+			//Debug.Log($"Кнопка '{buttonName}' найдена и настроена");
 		}
 		else
 		{
