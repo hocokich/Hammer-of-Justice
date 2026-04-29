@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyDrop : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class EnemyDrop : MonoBehaviour
 	[Header("Монеты")]
 	[SerializeField] private CoinDrop[] coins;
 
+	[Header("Физика выброса")]
+	[SerializeField] private float ejectForce = 5f;
+	[SerializeField] private float spreadAngle = 30f;
 
 	private Health health;
 	private float totalCoinChance;
@@ -19,7 +23,6 @@ public class EnemyDrop : MonoBehaviour
 	{
 		health = GetComponent<Health>();
 
-		// Считаем общий шанс монет
 		foreach (CoinDrop coin in coins)
 			totalCoinChance += coin.chance;
 
@@ -33,7 +36,7 @@ public class EnemyDrop : MonoBehaviour
 
 		if (roll < heartChance)
 		{
-			Instantiate(heartPrefab, transform.position, Quaternion.identity);
+			SpawnWithForce(heartPrefab);
 			return;
 		}
 
@@ -43,10 +46,25 @@ public class EnemyDrop : MonoBehaviour
 		{
 			if (roll < coin.chance)
 			{
-				Instantiate(coin.prefab, transform.position, Quaternion.identity);
+				SpawnWithForce(coin.prefab);
 				return;
 			}
 			roll -= coin.chance;
+		}
+	}
+
+	private void SpawnWithForce(GameObject prefab)
+	{
+		if (prefab == null) return;
+
+		GameObject obj = Instantiate(prefab, transform.position, Quaternion.identity);
+		Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+		if (rb != null)
+		{
+			float angle = Random.Range(-spreadAngle, spreadAngle);
+			Vector2 dir = Quaternion.Euler(0, 0, angle) * Vector2.up;
+			rb.linearVelocity = dir * ejectForce;
+			rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 		}
 	}
 
@@ -60,6 +78,6 @@ public class EnemyDrop : MonoBehaviour
 	public class CoinDrop
 	{
 		public GameObject prefab;
-		public float chance; // Шанс выпадения (0-100)
+		public float chance;
 	}
 }

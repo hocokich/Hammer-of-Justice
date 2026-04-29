@@ -12,8 +12,8 @@ public class Coin : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 
-		float randomX = Random.Range(-sideForce, sideForce);
-		rb.linearVelocity = new Vector2(randomX, -bounceForce);
+		//float randomX = Random.Range(-sideForce, sideForce);
+		//rb.linearVelocity = new Vector2(randomX, -bounceForce);
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 

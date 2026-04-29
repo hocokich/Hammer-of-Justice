@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
 		if (existing != null)
 		{
 			existing.rescued = levelData.rescued;
+			existing.openedChests = levelData.openedChests;   // ← добавить
 			existing.coinsEarned = levelData.coinsEarned;
 		}
 		else
@@ -84,6 +85,11 @@ public class GameManager : MonoBehaviour
 	{
 		LevelSaveData data = completedLevels.Find(l => l.sceneName == sceneName);
 		return data?.rescued ?? new List<bool>();
+	}
+	public List<bool> GetOpenedChestsForLevel(string sceneName)
+	{
+		LevelSaveData data = completedLevels.Find(l => l.sceneName == sceneName);
+		return data?.openedChests ?? new List<bool>();
 	}
 
 	public void SaveGame()
@@ -143,5 +149,6 @@ public class LevelSaveData
 	public int actNumber;
 	public int levelNumber;
 	public List<bool> rescued;
-	public int coinsEarned; // Сколько монет собрано на уровне
+	public List<bool> openedChests;
+	public int coinsEarned; //Монет на уровне
 }
