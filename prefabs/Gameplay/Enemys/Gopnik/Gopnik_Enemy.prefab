@@ -170,7 +170,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.51, y: 12.06, z: 0}
-  m_LocalScale: {x: 1, y: 0.7497626, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2700661711486344647}
@@ -222,8 +222,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.78431374, g: 0.007450014, b: 0, a: 1}
+  m_Sprite: {fileID: -2756699986305231383, guid: 54a5edd1c1fe70641bb549ef38cb8682, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -271,13 +271,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 0.96875, y: 1.34375}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.39}
   m_EdgeRadius: 0
 --- !u!50 &3279371726434672302
 Rigidbody2D:
@@ -355,6 +355,8 @@ MonoBehaviour:
     chance: 25
   - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
     chance: 10
+  ejectForce: 5
+  spreadAngle: 30
 --- !u!95 &7261747921485981686
 Animator:
   serializedVersion: 7
@@ -390,12 +392,24 @@ PrefabInstance:
       value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalPosition.z

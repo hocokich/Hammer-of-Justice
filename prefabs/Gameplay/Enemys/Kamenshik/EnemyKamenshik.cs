@@ -29,7 +29,7 @@ public class EnemyKamenshik : MonoBehaviour
 
 		if (stoneRb != null)
 		{
-			float direction = transform.localScale.x > 0 ? -1f : 1f;
+			float direction = transform.localScale.x > 0 ? 1f : -1f;   // вперёд перед собой
 			stoneRb.linearVelocity = new Vector2(throwForceX * direction, throwForceY);
 		}
 	}
