@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 116047193898640744}
   - component: {fileID: 6846690080495021837}
   - component: {fileID: 3793512585518041409}
-  - component: {fileID: 5792612614676377106}
+  - component: {fileID: 3865553807899360681}
   m_Layer: 10
   m_Name: Civilian
   m_TagString: Untagged
@@ -181,7 +181,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   spriteCaged: {fileID: -5489757379126831709, guid: 048f481c9338d2b488e0f9099fe2f667, type: 3}
   spriteRescued: {fileID: 786805274953802068, guid: 048f481c9338d2b488e0f9099fe2f667, type: 3}
---- !u!95 &5792612614676377106
+--- !u!95 &3865553807899360681
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ Animator:
   m_GameObject: {fileID: 74202481577934551}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b4d389b9d9f6fe54aac20c206fe3d1bb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2d579def764b3c84b8a20710b2c41b8e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
