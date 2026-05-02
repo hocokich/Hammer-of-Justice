@@ -3,17 +3,14 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 	[SerializeField] private int value = 1;
-	[SerializeField] private float bounceForce = 2f;
-	[SerializeField] private float sideForce = 1f;
+	//[SerializeField] private float bounceForce = 2f;
+	//[SerializeField] private float sideForce = 1f;
 
 	private Rigidbody2D rb;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-
-		//float randomX = Random.Range(-sideForce, sideForce);
-		//rb.linearVelocity = new Vector2(randomX, -bounceForce);
 		rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 	}
 

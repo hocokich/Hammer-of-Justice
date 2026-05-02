@@ -20,6 +20,8 @@ public class ChestDrop : MonoBehaviour
 	private Chest chest;
 	private Health health;
 
+	public static event Action OnAnyChestOpened;
+
 	private void Start()
 	{
 		chest = GetComponent<Chest>();
@@ -53,6 +55,7 @@ public class ChestDrop : MonoBehaviour
 	{
 		if (chest.IsOpened) return;   // уже открыт
 		chest.Open();                 // открываем сундук (монеты вылетят по Animation Event)
+		OnAnyChestOpened?.Invoke();
 	}
 
 	public void EjectCoins()
