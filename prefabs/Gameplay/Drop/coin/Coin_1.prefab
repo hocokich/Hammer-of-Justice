@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6137650628726883381}
   - component: {fileID: -4353139174922640042}
   - component: {fileID: -2649606988873487962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Coin_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
-  bounceForce: 2
-  sideForce: 1
 --- !u!50 &-4353139174922640042
 Rigidbody2D:
   serializedVersion: 5

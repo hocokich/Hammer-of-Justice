@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4259476774332525727}
   - component: {fileID: 5579542861766461428}
   - component: {fileID: 7184973986174026028}
-  - component: {fileID: 1112906669913700587}
   m_Layer: 8
   m_Name: damageTrigger
   m_TagString: Untagged
@@ -81,19 +80,6 @@ BoxCollider2D:
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7184973986174026028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3504187666102428820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead2e1c4e68317048a1a1c4399d3a6e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
---- !u!114 &1112906669913700587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,12 +209,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5468275346343796690, guid: 54a5edd1c1fe70641bb549ef38cb8682, type: 3}
+  m_Sprite: {fileID: 6484252870904682776, guid: 54a5edd1c1fe70641bb549ef38cb8682, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.875, y: 1.15625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -273,7 +259,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.875, y: 1.15625}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 0.875, y: 1.15625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -368,6 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
   heartChance: 15
+  manaPrefab: {fileID: 0}
+  manaChance: 0
   coins:
   - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
     chance: 50
@@ -375,8 +363,11 @@ MonoBehaviour:
     chance: 25
   - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
     chance: 10
+  minDropCount: 1
+  maxDropCount: 2
   ejectForce: 5
   spreadAngle: 30
+  spawnOffset: {x: 0, y: 0}
 --- !u!95 &4192172135569457640
 Animator:
   serializedVersion: 7

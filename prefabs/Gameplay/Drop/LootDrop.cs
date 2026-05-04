@@ -1,20 +1,25 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyDrop : MonoBehaviour
+public class LootDrop : MonoBehaviour
 {
-	[Header("Дроп")]
-
-	[Header("Хилл")]
+	[Header("Предметы")]
 	[SerializeField] private GameObject heartPrefab;
 	[SerializeField] private float heartChance = 15f;
 
-	[Header("Монеты")]
+	[SerializeField] private GameObject manaPrefab;
+	[SerializeField] private float manaChance = 10f;
+
 	[SerializeField] private CoinDrop[] coins;
+
+	[Header("Количество выпадающих предметов")]
+	[SerializeField] private int minDropCount = 1;
+	[SerializeField] private int maxDropCount = 1;
 
 	[Header("Физика выброса")]
 	[SerializeField] private float ejectForce = 5f;
 	[SerializeField] private float spreadAngle = 30f;
+	[SerializeField] private Vector2 spawnOffset = Vector2.zero;
 
 	private Health health;
 	private float totalCoinChance;
@@ -23,6 +28,7 @@ public class EnemyDrop : MonoBehaviour
 	{
 		health = GetComponent<Health>();
 
+		totalCoinChance = 0f;
 		foreach (CoinDrop coin in coins)
 			totalCoinChance += coin.chance;
 
@@ -30,34 +36,48 @@ public class EnemyDrop : MonoBehaviour
 			health.OnDeath += DropLoot;
 	}
 
-	private void DropLoot()
+	/// <summary> Вызвать при разрушении объекта. Может вызываться извне (AnimationEvent, ChestDrop и т.д.) </summary>
+	public void DropLoot()
 	{
-		float roll = Random.Range(0f, 100f);
-
-		if (roll < heartChance)
+		int count = Random.Range(minDropCount, maxDropCount + 1);
+		for (int i = 0; i < count; i++)
 		{
-			SpawnWithForce(heartPrefab);
-			return;
+			GameObject prefab = ChoosePrefab();
+			if (prefab != null)
+				SpawnWithForce(prefab);
 		}
+	}
 
-		roll -= heartChance;
+	private GameObject ChoosePrefab()
+	{
+		float heart = heartChance;
+		float mana = manaChance;
+		float coinTotal = totalCoinChance;
+		float total = heart + mana + coinTotal;
+		if (total <= 0f) return null;
 
+		float roll = Random.Range(0f, total);
+		if (roll < heart) return heartPrefab;
+		roll -= heart;
+		if (roll < mana) return manaPrefab;
+		roll -= mana;
+
+		// Монеты
 		foreach (CoinDrop coin in coins)
 		{
 			if (roll < coin.chance)
-			{
-				SpawnWithForce(coin.prefab);
-				return;
-			}
+				return coin.prefab;
 			roll -= coin.chance;
 		}
+		return null;
 	}
 
 	private void SpawnWithForce(GameObject prefab)
 	{
 		if (prefab == null) return;
 
-		GameObject obj = Instantiate(prefab, transform.position, Quaternion.identity);
+		Vector2 spawnPos = (Vector2)transform.position + spawnOffset;
+		GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
 		Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
 		if (rb != null)
 		{
