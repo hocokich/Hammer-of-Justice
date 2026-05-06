@@ -324,7 +324,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2112
   wallCheckDistance: 0.6
-  groundCheckDistance: 0.8
+  groundCheckDistance: 0.2
   groundCheckOffset: 0.8
 --- !u!114 &1495494650690756187
 MonoBehaviour:
