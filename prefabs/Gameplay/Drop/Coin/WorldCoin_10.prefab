@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3508186343775180751}
   - component: {fileID: -3952989958961068180}
   - component: {fileID: -7280417154355614454}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WorldCoin_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

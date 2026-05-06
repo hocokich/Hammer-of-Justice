@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7352315914149931491}
   - component: {fileID: 4171332057232391689}
   - component: {fileID: 2313747909993404934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mana Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5625, y: 0.75}
+    oldSize: {x: 0.59375, y: 0.75}
     newSize: {x: 0.21875, y: 0.5625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

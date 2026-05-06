@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,28 +9,34 @@ public class ButtonManagerMenu : MonoBehaviour
 	[System.Serializable]
 	public class ButtonAction
 	{
-		public string buttonName;        // Имя кнопки для поиска
+		public string buttonName;        // РРјСЏ РєРЅРѕРїРєРё РґР»СЏ РїРѕРёСЃРєР°
 		public string sceneName;		
-		public UnityEngine.Events.UnityEvent onClickAction; // Методы при нажатии
+		public UnityEngine.Events.UnityEvent onClickAction; // РњРµС‚РѕРґС‹ РїСЂРё РЅР°Р¶Р°С‚РёРё
 	}
-	[Header("Настройки кнопок")]
+	[Header("РќР°СЃС‚СЂРѕР№РєРё РєРЅРѕРїРѕРє")]
 	[SerializeField] private List<ButtonAction> buttonActions = new List<ButtonAction>();
 
-	[Header("Панель Настроек")]
+	[Header("РћР±С‰Р°СЏ РєРЅРѕРїРєР° РќР°Р·Р°Рґ")]
+	[SerializeField] private GameObject backButton;
+
+	[Header("Р—Р°С‚РµРјРЅС‘РЅРЅР°СЏ РїР°РЅРµР»СЊ")]
+	[SerializeField] private GameObject shadePanel;
+
+	[Header("РџР°РЅРµР»СЊ РќР°СЃС‚СЂРѕРµРє")]
 	[SerializeField] private GameObject StartPanel;
-	[Header("Панель Настроек")]
+	[Header("РџР°РЅРµР»СЊ РќР°СЃС‚СЂРѕРµРє")]
 	[SerializeField] private GameObject SettingsPanel;
-	[Header("Панель актов")]
+	[Header("РџР°РЅРµР»СЊ Р°РєС‚РѕРІ")]
 	[SerializeField] private GameObject ActsPanel;
-	[Header("Панель 1 акт")]
+	[Header("РџР°РЅРµР»СЊ 1 Р°РєС‚")]
 	[SerializeField] private GameObject ActOnePanel;
 
-	//[Header("Панель 2 акт")]
+	//[Header("РџР°РЅРµР»СЊ 2 Р°РєС‚")]
 	//[SerializeField] private GameObject ActSecPanel;
-	//[Header("Панель 3 акт")]
+	//[Header("РџР°РЅРµР»СЊ 3 Р°РєС‚")]
 	//[SerializeField] private GameObject ActThirdPanel;
 
-	[Header("Уровни первого акта")]
+	[Header("РЈСЂРѕРІРЅРё РїРµСЂРІРѕРіРѕ Р°РєС‚Р°")]
 	[SerializeField] private List<ButtonAction> buttonFirstActLvls = new List<ButtonAction>();
 
 	private Dictionary<string, Button> foundButtons = new Dictionary<string, Button>();
@@ -43,17 +49,19 @@ public class ButtonManagerMenu : MonoBehaviour
 		FindAndAssignAllButtons();
 
 		OpenedLvls();
+
+		backButton.SetActive(false);
 	}
 
 	void FindAndAssignAllButtons()
 	{
-		// Для кнопок в разделе обычных кнопок
+		// Р”Р»СЏ РєРЅРѕРїРѕРє РІ СЂР°Р·РґРµР»Рµ РѕР±С‹С‡РЅС‹С… РєРЅРѕРїРѕРє
 		foreach (var buttonAction in buttonActions)
 		{
 			FindAndAssignButton(buttonAction.buttonName, buttonAction.onClickAction, foundButtons);
 		}
 
-		// Для кнопок в разделе уровней первого акта
+		// Р”Р»СЏ РєРЅРѕРїРѕРє РІ СЂР°Р·РґРµР»Рµ СѓСЂРѕРІРЅРµР№ РїРµСЂРІРѕРіРѕ Р°РєС‚Р°
 		foreach (var buttonAction in buttonFirstActLvls)
 		{
 			FindAndAssignButton(buttonAction.buttonName, buttonAction.onClickAction, foundLvls);
@@ -64,32 +72,32 @@ public class ButtonManagerMenu : MonoBehaviour
 	{
 		if (string.IsNullOrEmpty(buttonName))
 		{
-			Debug.LogWarning("Имя кнопки не указано!");
+			Debug.LogWarning("РРјСЏ РєРЅРѕРїРєРё РЅРµ СѓРєР°Р·Р°РЅРѕ!");
 			return;
 		}
 
-		// Поиск кнопки
+		// РџРѕРёСЃРє РєРЅРѕРїРєРё
 		Button button = FindButtonByName(buttonName);
 
 		if (button != null)
 		{
-			// Удаляем старые слушатели
+			// РЈРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Рµ СЃР»СѓС€Р°С‚РµР»Рё
 			button.onClick.RemoveAllListeners();
 
-			// Добавляем новые методы
+			// Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Рµ РјРµС‚РѕРґС‹
 			button.onClick.AddListener(() => action?.Invoke());
 
-			// Сохраняем в указанный словарь
+			// РЎРѕС…СЂР°РЅСЏРµРј РІ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃР»РѕРІР°СЂСЊ
 			if (!targetDictionary.ContainsKey(buttonName))
 			{
 				targetDictionary.Add(buttonName, button);
 			}
 
-			//Debug.Log($"Кнопка '{buttonName}' найдена и сохранена в {(targetDictionary == foundLvls ? "foundLvls" : "foundButtons")}");
+			//Debug.Log($"РљРЅРѕРїРєР° '{buttonName}' РЅР°Р№РґРµРЅР° Рё СЃРѕС…СЂР°РЅРµРЅР° РІ {(targetDictionary == foundLvls ? "foundLvls" : "foundButtons")}");
 		}
 		else
 		{
-			Debug.LogWarning($"Кнопка с именем '{buttonName}' не найдена!");
+			Debug.LogWarning($"РљРЅРѕРїРєР° СЃ РёРјРµРЅРµРј '{buttonName}' РЅРµ РЅР°Р№РґРµРЅР°!");
 		}
 	}
 
@@ -97,13 +105,13 @@ public class ButtonManagerMenu : MonoBehaviour
 	{
 		Button[] allButtons;
 
-		// Глобальный поиск по всей сцене, включая неактивные
+		// Р“Р»РѕР±Р°Р»СЊРЅС‹Р№ РїРѕРёСЃРє РїРѕ РІСЃРµР№ СЃС†РµРЅРµ, РІРєР»СЋС‡Р°СЏ РЅРµР°РєС‚РёРІРЅС‹Рµ
 		List<Button> allButtonsList = new List<Button>();
 		Button[] sceneButtons = Resources.FindObjectsOfTypeAll<Button>();
 
 		foreach (Button btn in sceneButtons)
 		{
-			// Исключаем префабы
+			// РСЃРєР»СЋС‡Р°РµРј РїСЂРµС„Р°Р±С‹
 			if (btn.gameObject.scene.IsValid())
 			{
 				allButtonsList.Add(btn);
@@ -111,7 +119,7 @@ public class ButtonManagerMenu : MonoBehaviour
 		}
 		allButtons = allButtonsList.ToArray();
 
-		// Ищем по точному имени
+		// РС‰РµРј РїРѕ С‚РѕС‡РЅРѕРјСѓ РёРјРµРЅРё
 		foreach (Button button in allButtons)
 		{
 			if (button.gameObject.name == buttonName)
@@ -123,21 +131,21 @@ public class ButtonManagerMenu : MonoBehaviour
 		return null;
 	}
 
-	// Метод для принудительного поиска всех кнопок снова
+	// РњРµС‚РѕРґ РґР»СЏ РїСЂРёРЅСѓРґРёС‚РµР»СЊРЅРѕРіРѕ РїРѕРёСЃРєР° РІСЃРµС… РєРЅРѕРїРѕРє СЃРЅРѕРІР°
 	public void RefreshButtons()
 	{
 		foundButtons.Clear();
 		FindAndAssignAllButtons();
 	}
 
-	// Получить найденную кнопку по имени
+	// РџРѕР»СѓС‡РёС‚СЊ РЅР°Р№РґРµРЅРЅСѓСЋ РєРЅРѕРїРєСѓ РїРѕ РёРјРµРЅРё
 	public Button GetFoundButton(string buttonName)
 	{
 		if (foundButtons.TryGetValue(buttonName, out Button button))
 		{
 			return button;
 		}
-		// Если не нашли, ищем в кнопках уровней
+		// Р•СЃР»Рё РЅРµ РЅР°С€Р»Рё, РёС‰РµРј РІ РєРЅРѕРїРєР°С… СѓСЂРѕРІРЅРµР№
 		if (foundLvls.TryGetValue(buttonName, out button))
 		{
 			return button;
@@ -145,7 +153,7 @@ public class ButtonManagerMenu : MonoBehaviour
 		return null;
 	}
 
-	//Открываем текущий прогресс
+	//РћС‚РєСЂС‹РІР°РµРј С‚РµРєСѓС‰РёР№ РїСЂРѕРіСЂРµСЃСЃ
 	public void OpenedLvls()
 	{
 		GameManager.Instance.LoadGame();
@@ -157,7 +165,7 @@ public class ButtonManagerMenu : MonoBehaviour
 			string sceneName = buttonFirstActLvls[i].sceneName;
 			bool isCompleted = GameManager.Instance.IsLevelCompleted(sceneName);
 
-			// Первый уровень всегда открыт, остальные — если предыдущий пройден
+			// РџРµСЂРІС‹Р№ СѓСЂРѕРІРµРЅСЊ РІСЃРµРіРґР° РѕС‚РєСЂС‹С‚, РѕСЃС‚Р°Р»СЊРЅС‹Рµ вЂ” РµСЃР»Рё РїСЂРµРґС‹РґСѓС‰РёР№ РїСЂРѕР№РґРµРЅ
 			bool isUnlocked;
 			if (i == 0)
 			{
@@ -180,9 +188,10 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	public void StartGame()
 	{
-		StartPanel.GetComponent<UIFader>().FadeOut(()=>
+		StartPanel.GetComponent<UIFader>().FadeOut(() =>
 		{
 			ActsPanel.GetComponent<UIFader>().FadeInFromHidden();
+			RefreshBackButton();
 		});
 	}
 	public void OpenSettings()
@@ -190,30 +199,39 @@ public class ButtonManagerMenu : MonoBehaviour
 		StartPanel.GetComponent<UIFader>().FadeOut(()=>
 		{
 			SettingsPanel.GetComponent<UIFader>().FadeInFromHidden();
+			RefreshBackButton();
 		});
 	}
 
 	public void BackToStart()
 	{
-		try
-		{
-			ActsPanel.GetComponent<UIFader>().FadeOut(() =>
-			{
-				StartPanel.GetComponent<UIFader>().FadeInFromHidden();
-			});
-		}
-		catch (Exception ex)
-		{
-			//Debug.LogException(ex);
-		}
-		finally
-		{
-			SettingsPanel.GetComponent<UIFader>().FadeOut(() =>
-			{
-				StartPanel.GetComponent<UIFader>().FadeInFromHidden();
-			});
-		}
+		// РЎСЂР°Р·Сѓ РЅР°С‡РёРЅР°РµРј СЃРєСЂС‹РІР°С‚СЊ РєРЅРѕРїРєСѓ
+		HideBackButton();
 
+		if (ActsPanel.activeSelf)
+		{
+			ActsPanel.GetComponent<UIFader>()?.FadeOut(() =>
+			{
+				ActsPanel.SetActive(false);
+				_showStartPanel();
+			});
+		}
+		else if (SettingsPanel.activeSelf)
+		{
+			SettingsPanel.GetComponent<UIFader>()?.FadeOut(() =>
+			{
+				SettingsPanel.SetActive(false);
+				_showStartPanel();
+			});
+		}
+		else
+		{
+			_showStartPanel();
+		}
+	}
+	private void _showStartPanel()
+	{
+		StartPanel.GetComponent<UIFader>().FadeInFromHidden();
 	}
 
 	public void StartAct(int i)
@@ -221,52 +239,128 @@ public class ButtonManagerMenu : MonoBehaviour
 		switch (i)
 		{
 			case 1:
-				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
+				ActsPanel.GetComponent<UIFader>().FadeOut(() =>
 				{
 					ActOnePanel.GetComponent<UIFader>().FadeInFromHidden();
+					RefreshBackButton();
 				});
 				break;
-
-			case 2:
-				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
-				{
-					//ActSecPanel.GetComponent<UIFader>().FadeInFromHidden();
-				});
-				break;
-
-			case 3:
-				ActsPanel.GetComponent<UIFader>().FadeOut(()=>
-				{
-					//ActThirdPanel.GetComponent<UIFader>().FadeInFromHidden();
-				});
-				break;
-
-			default:
-				Debug.LogWarning("Не удалось запустить акт");
-				break;
+				// Р°РЅР°Р»РѕРіРёС‡РЅРѕ РґР»СЏ 2 Рё 3, РєРѕРіРґР° РѕРЅРё Р±СѓРґСѓС‚ РіРѕС‚РѕРІС‹
+		}
+	}
+	public void BackToActs()
+	{
+		UIFader fader = ActOnePanel.GetComponent<UIFader>();
+		if (fader != null)
+			fader.FadeOut(() =>
+			{
+				ActOnePanel.SetActive(false);    // в†ђ СЃРєСЂС‹РІР°РµРј РїР°РЅРµР»СЊ СѓСЂРѕРІРЅРµР№
+				ActsPanel.GetComponent<UIFader>().FadeInFromHidden();
+				RefreshBackButton();            // РєРЅРѕРїРєР° В«РќР°Р·Р°РґВ» РѕСЃС‚Р°РЅРµС‚СЃСЏ РІРёРґРёРјРѕР№
+			});
+		else
+		{
+			ActOnePanel.SetActive(false);
+			ActsPanel.SetActive(true);
+			RefreshBackButton();
 		}
 	}
 
-	public void BackToActs()
+	public void UniversalBack()
 	{
-		ActOnePanel.GetComponent<UIFader>().FadeOut(()=>
-		{
-			ActsPanel.GetComponent<UIFader>().FadeInFromHidden();
-		});
-
+		if (ActOnePanel.activeSelf)
+			BackToActs();
+		else if (ActsPanel.activeSelf || SettingsPanel.activeSelf)
+			BackToStart();
 	}
+	private void HideBackButton()
+	{
+		// РЎРєСЂС‹РІР°РµРј РєРЅРѕРїРєСѓ Рё Р·Р°С‚РµРјРЅС‘РЅРЅСѓСЋ РїР°РЅРµР»СЊ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ
+		if (backButton != null)
+		{
+			UIFader fader = backButton.GetComponent<UIFader>();
+			if (fader != null)
+				fader.FadeOut(() => backButton.SetActive(false));
+			else
+				backButton.SetActive(false);
+		}
+
+		if (shadePanel != null)
+		{
+			UIFader fader = shadePanel.GetComponent<UIFader>();
+			if (fader != null)
+				fader.FadeOut(() => shadePanel.SetActive(false));
+			else
+				shadePanel.SetActive(false);
+		}
+	}
+	/// <summary> РџРѕРєР°Р·Р°С‚СЊ РєРЅРѕРїРєСѓ В«РќР°Р·Р°РґВ», РµСЃР»Рё РјС‹ РЅРµ РЅР° СЃС‚Р°СЂС‚РѕРІРѕРј СЌРєСЂР°РЅРµ </summary>
+	private void RefreshBackButton()
+	{
+		bool onStart = StartPanel.activeSelf && !ActsPanel.activeSelf && !SettingsPanel.activeSelf && !ActOnePanel.activeSelf;
+
+		// РџРѕРєР°Р·С‹РІР°РµРј РєРЅРѕРїРєСѓ Рё Р·Р°С‚РµРјРЅС‘РЅРЅСѓСЋ РїР°РЅРµР»СЊ (РёР»Рё СЃРєСЂС‹РІР°РµРј, РµСЃР»Рё onStart)
+		if (backButton != null)
+		{
+			UIFader fader = backButton.GetComponent<UIFader>();
+			if (fader != null)
+			{
+				if (onStart)
+					fader.FadeOut(() => backButton.SetActive(false));
+				else
+				{
+					if (!backButton.activeSelf)
+					{
+						backButton.SetActive(true);
+						fader.SetAlpha(0f);
+					}
+					fader.FadeIn();
+				}
+			}
+			else
+			{
+				backButton.SetActive(!onStart);
+			}
+		}
+
+		// РўРѕ Р¶Рµ СЃР°РјРѕРµ РґР»СЏ Р·Р°С‚РµРјРЅС‘РЅРЅРѕР№ РїР°РЅРµР»Рё
+		if (shadePanel != null)
+		{
+			UIFader fader = shadePanel.GetComponent<UIFader>();
+			if (fader != null)
+			{
+				if (onStart)
+					fader.FadeOut(() => shadePanel.SetActive(false));
+				else
+				{
+					if (!shadePanel.activeSelf)
+					{
+						shadePanel.SetActive(true);
+						fader.SetAlpha(0f);
+					}
+					fader.FadeIn();
+				}
+			}
+			else
+			{
+				shadePanel.SetActive(!onStart);
+			}
+		}
+	}
+
+
 
 	public void QuitGame()
 	{
-		// Если игра запущена в редакторе Unity
+		// Р•СЃР»Рё РёРіСЂР° Р·Р°РїСѓС‰РµРЅР° РІ СЂРµРґР°РєС‚РѕСЂРµ Unity
 		#if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;
 		#else
-				// В собранной версии игры
+				// Р’ СЃРѕР±СЂР°РЅРЅРѕР№ РІРµСЂСЃРёРё РёРіСЂС‹
 				Application.Quit();
 		#endif
 
-		// Можно добавить логирование
-		Debug.Log("Игра завершена");
+		// РњРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ Р»РѕРіРёСЂРѕРІР°РЅРёРµ
+		Debug.Log("РРіСЂР° Р·Р°РІРµСЂС€РµРЅР°");
 	}
 }

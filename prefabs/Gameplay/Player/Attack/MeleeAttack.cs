@@ -1,50 +1,57 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class MeleeAttack : MonoBehaviour
 {
 	[Header("Настройки атаки")]
 	[SerializeField] private int damage = 1;
-	[SerializeField] private float attackCooldown = 0.3f;
 	[SerializeField] private Transform attackPoint;
 	[SerializeField] private float attackRange = 2f;
+	[SerializeField] private Vector2 attackOffset = Vector2.zero;
 	[SerializeField] private LayerMask enemyLayer;
 
-	private float lastAttackTime = -999f;
+	[Header("Анимация")]
+	[SerializeField] private Animator animator;
 
-	private void Update()
+	private bool isAttacking;
+
+	private void Start()
 	{
-		if (Input.GetButtonDown("Fire1") && Time.time >= lastAttackTime + attackCooldown)
-		{
-			PerformAttack();
-		}
+		if (animator == null) animator = GetComponent<Animator>();
 	}
 
-	private void PerformAttack()
+	public void OnAttack()
 	{
-		lastAttackTime = Time.time;
+		if (isAttacking) return;
+		isAttacking = true;
+		animator?.SetTrigger("Attack");
+		StartCoroutine(ResetAttackAfterAnimation());
+	}
 
-		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
+	private IEnumerator ResetAttackAfterAnimation()
+	{
+		// Ждём один кадр, чтобы аниматор перешёл в состояние Attack
+		yield return null;
 
-		// проверка попадания
+		// Получаем длину текущей анимации (атаки)
+		float animLength = animator.GetCurrentAnimatorStateInfo(0).length;
+		yield return new WaitForSeconds(animLength);
+
+		isAttacking = false;
+	}
+
+	// Animation Event: момент нанесения урона
+	public void DealDamage()
+	{
+		float dir = Mathf.Sign(transform.localScale.x);
+		Vector3 offset = new Vector3(attackOffset.x * dir, attackOffset.y, 0f);
+		Vector3 center = attackPoint.position + offset;
+
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(center, attackRange, enemyLayer);
 		if (hitEnemies.Length > 0)
-		{
 			CameraShake.Instance?.ShakeHit();
-		}
 
 		foreach (Collider2D enemy in hitEnemies)
-		{
-			Health enemyHealth = enemy.GetComponent<Health>();
-			if (enemyHealth != null)
-			{
-				enemyHealth.TakeDamage(damage);
-			}
-		}
-	}
-
-	private void OnDrawGizmosSelected()
-	{
-		if (attackPoint == null) return;
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+			enemy.GetComponent<Health>()?.TakeDamage(damage);
 	}
 }

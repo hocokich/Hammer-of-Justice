@@ -66,6 +66,12 @@ public class UIFader : MonoBehaviour
 		onComplete?.Invoke();
 	}
 
+	public void SetAlpha(float alpha)
+	{
+		if (canvasGroup != null)
+			canvasGroup.alpha = alpha;
+	}
+
 	public void FadeInFromHidden()
 	{
 		gameObject.SetActive(true);
