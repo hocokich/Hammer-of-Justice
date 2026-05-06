@@ -5,35 +5,39 @@ using UnityEngine.SceneManagement;
 public class UIChestIcon : MonoBehaviour
 {
 	[SerializeField] private Image chestIcon;
+	[SerializeField] private Sprite chestClosed;
+	[SerializeField] private Sprite chestOpened;
 
 	private void Start()
 	{
+		// Показываем закрытый сундук по умолчанию
 		if (chestIcon != null)
-			chestIcon.enabled = false;
+			chestIcon.sprite = chestClosed;
 
-		// Проверяем, был ли сундук открыт ранее (при перезаходе на уровень)
+		// Если уровень уже пройден и сундук был открыт – сразу показываем открытый
 		string sceneName = SceneManager.GetActiveScene().name;
 		if (GameManager.Instance.IsLevelCompleted(sceneName))
 		{
 			var openedChests = GameManager.Instance.GetOpenedChestsForLevel(sceneName);
 			if (openedChests != null && openedChests.Count > 0 && openedChests[0])
 			{
-				ShowChestIcon();
+				if (chestIcon != null)
+					chestIcon.sprite = chestOpened;
 			}
 		}
 
-		// Подписываемся на событие открытия в реальном времени
-		ChestDrop.OnAnyChestOpened += ShowChestIcon;
+		// Подписываемся на событие открытия сундука в реальном времени
+		ChestDrop.OnAnyChestOpened += OnChestOpened;
 	}
 
-	private void ShowChestIcon()
+	private void OnChestOpened()
 	{
 		if (chestIcon != null)
-			chestIcon.enabled = true;
+			chestIcon.sprite = chestOpened;
 	}
 
 	private void OnDestroy()
 	{
-		ChestDrop.OnAnyChestOpened -= ShowChestIcon;
+		ChestDrop.OnAnyChestOpened -= OnChestOpened;
 	}
 }
