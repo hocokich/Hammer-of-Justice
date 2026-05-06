@@ -40,8 +40,12 @@ public class UIFader : MonoBehaviour
 		float startAlpha = canvasGroup.alpha;
 		float timer = 0f;
 
-		canvasGroup.interactable = targetAlpha > 0f;
-		canvasGroup.blocksRaycasts = targetAlpha > 0f;
+		// Если исчезаем — не выключаем интерактивность до конца
+		if (targetAlpha > 0f)
+		{
+			canvasGroup.interactable = true;
+			canvasGroup.blocksRaycasts = true;
+		}
 
 		while (timer < fadeDuration)
 		{
@@ -51,6 +55,14 @@ public class UIFader : MonoBehaviour
 		}
 
 		canvasGroup.alpha = targetAlpha;
+
+		// Когда полностью прозрачны — отключаем
+		if (targetAlpha <= 0f)
+		{
+			canvasGroup.interactable = false;
+			canvasGroup.blocksRaycasts = false;
+		}
+
 		onComplete?.Invoke();
 	}
 

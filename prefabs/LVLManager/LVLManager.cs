@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
 	public void CompleteLevel()
 	{
-		GetComponent<Pause>().PauseGame();
+		//GetComponent<Pause>().PauseGame();
 
 		if (isCompleted) return;
 		isCompleted = true;
