@@ -20,6 +20,18 @@ public class MeleeAttack : MonoBehaviour
 		if (animator == null) animator = GetComponent<Animator>();
 	}
 
+	private void Update()
+	{
+		#if UNITY_EDITOR
+		if (Input.GetButtonDown("Fire1") && !isAttacking)
+		{
+			isAttacking = true;
+			animator?.SetTrigger("Attack");
+			StartCoroutine(ResetAttackAfterAnimation());
+		}
+		#endif
+	}
+
 	public void OnAttack()
 	{
 		if (isAttacking) return;
