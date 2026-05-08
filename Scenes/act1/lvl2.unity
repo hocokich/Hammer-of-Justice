@@ -60102,6 +60102,7 @@ GameObject:
   - component: {fileID: 1789678418}
   - component: {fileID: 1789678419}
   - component: {fileID: 1789678420}
+  - component: {fileID: 1789678421}
   m_Layer: 5
   m_Name: Player Buttons
   m_TagString: Untagged
@@ -60163,6 +60164,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropComponent: {fileID: 0}
+--- !u!114 &1789678421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789678417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd276c8d9d13484f95e2bd72b7f2803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789727330
 GameObject:
   m_ObjectHideFlags: 0
@@ -63202,17 +63215,13 @@ PrefabInstance:
       value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1926201351761185206}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1366991593}
     - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1926201351761185207}
+      objectReference: {fileID: 1789678421}
     - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -63221,46 +63230,6 @@ PrefabInstance:
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 387762098}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartExit
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ShowWinPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: Disable
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: UpdateWinPanelCivilians
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: UpdateWinPanelChest
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartPlayerExit, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: ButtonManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: DisablePlayerInput, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: WinPanelCivilians, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
-      propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: WinPanelChest, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 8811511351924289534, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 91.07
@@ -63306,28 +63275,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 563d654f51630c046990aa530491649f, type: 3}
---- !u!114 &1926201351761185206 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 886442672555838916, guid: 563d654f51630c046990aa530491649f, type: 3}
-  m_PrefabInstance: {fileID: 1926201351761185205}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e6a432cf06f82841aa9fd01b680e8fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1926201351761185207 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8751608699875649040, guid: 563d654f51630c046990aa530491649f, type: 3}
-  m_PrefabInstance: {fileID: 1926201351761185205}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd276c8d9d13484f95e2bd72b7f2803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3140319694751227880
 PrefabInstance:
   m_ObjectHideFlags: 0

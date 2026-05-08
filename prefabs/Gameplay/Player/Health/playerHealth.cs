@@ -12,7 +12,6 @@ public class PlayerHealth : Health
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private float blinkInterval = 0.1f;
 
-
 	private motion movement;
 	private MeleeAttack meleeAttack;
 
@@ -69,6 +68,19 @@ public class PlayerHealth : Health
 		// Отключаем управление
 		if (movement != null) movement.enabled = false;
 		if (meleeAttack != null) meleeAttack.enabled = false;
+
+		// Запускаем анимацию смерти
+		Animator anim = GetComponent<Animator>();
+		if (anim != null)
+			anim.SetTrigger("Dead");
+
+		// Замораживаем перемещение по X и даём небольшой подскок
+		Rigidbody2D rb = GetComponent<Rigidbody2D>();
+		if (rb != null)
+		{
+			rb.linearVelocity = new Vector2(0f, 7.5f);  // подскок вверх
+			rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+		}
 
 		// Перезагружаем сцену через 2 секунды
 		Invoke(nameof(RestartLevel), 2f);

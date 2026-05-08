@@ -29,7 +29,10 @@ public class StartPlayerExit : MonoBehaviour
 		var animator = player.GetComponent<Animator>();
 		if (animator) animator.SetFloat("Speed", 1);
 
+
+		//Don't touch
 		LevelManager.Instance.CompleteLevel();
+		
 		// Стартуем движение
 		StartCoroutine(WalkOff(player));
 	}
