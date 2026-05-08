@@ -9,7 +9,9 @@ public class FinishTrigger : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			LevelManager.Instance.CompleteLevel();
+			//if(LevelManager.Instance != null)
+			//	LevelManager.Instance.CompleteLevel();
+
 			onFinish?.Invoke();
 		}
 	}

@@ -68,6 +68,7 @@ public class motion : MonoBehaviour
 		else if (horizontalInput < 0 && facingRight) Flip();
 
 		// --- Прыжок ---
+#if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Space) && Time.time > lastJumpTime + jumpCooldown)
 		{
 			if (isGrounded)
@@ -81,6 +82,7 @@ public class motion : MonoBehaviour
 				Jump();
 			}
 		}
+#endif
 
 		// --- Анимации ---
 		if (animator)
