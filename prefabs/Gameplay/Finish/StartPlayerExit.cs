@@ -29,6 +29,7 @@ public class StartPlayerExit : MonoBehaviour
 		var animator = player.GetComponent<Animator>();
 		if (animator) animator.SetFloat("Speed", 1);
 
+		LevelManager.Instance.CompleteLevel();
 		// Стартуем движение
 		StartCoroutine(WalkOff(player));
 	}
@@ -41,7 +42,5 @@ public class StartPlayerExit : MonoBehaviour
 			player.transform.Translate(Vector3.right * walkSpeed * Time.deltaTime);
 			yield return null;
 		}
-
-		LevelManager.Instance.CompleteLevel();
 	}
 }

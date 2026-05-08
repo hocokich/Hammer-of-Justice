@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class WinPanelChest : MonoBehaviour
 {
-	[SerializeField] private Image chestImage;   // изображение сундука, которое по€вл€етс€, если сундук найден
+	[SerializeField] private Image chestImage;
 
-	private void OnEnable()
+	// ¬ызываетс€ из LevelManager.CompleteLevel()
+	public void UpdateWinPanelChest()
 	{
 		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 		var openedChests = GameManager.Instance.GetOpenedChestsForLevel(sceneName);
-
-		// —ундук отображаетс€, если он был открыт (т.е. найден и разбит)
 		bool chestFound = openedChests != null && openedChests.Count > 0 && openedChests[0];
 		if (chestImage != null)
 			chestImage.enabled = chestFound;

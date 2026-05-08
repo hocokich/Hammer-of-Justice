@@ -6,7 +6,8 @@ public class WinPanelCivilians : MonoBehaviour
 	[Header("Иконки жителей")]
 	[SerializeField] private Image[] civilianIcons;
 
-	private void OnEnable()
+	// Вызывается из LevelManager.CompleteLevel()
+	public void UpdateWinPanelCivilians()
 	{
 		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 		var rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
