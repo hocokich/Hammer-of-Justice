@@ -1296,15 +1296,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159252645}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.3, y: 15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 46.51, y: 15.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3871295147249508258}
   - {fileID: 872566943}
   - {fileID: 1437522087}
-  m_Father: {fileID: 0}
+  - {fileID: 665632128}
+  m_Father: {fileID: 2012270257}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &160140354
 PrefabInstance:
@@ -1738,7 +1739,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 525, y: 50}
+  m_SizeDelta: {x: 650, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &171601745
 MonoBehaviour:
@@ -1760,7 +1761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- \u0423\u0420\u041E\u0412\u0415\u041D\u042C 2 -"
+  m_text: "- \u0423\u0420\u041E\u0412\u0415\u041D\u042C ? -"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09582e1570417c24cba49532207eb991, type: 2}
   m_sharedMaterial: {fileID: -1970990443280016198, guid: 09582e1570417c24cba49532207eb991, type: 2}
@@ -4299,7 +4300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17, y: 5.5}
+  m_AnchoredPosition: {x: -15, y: 7.5}
   m_SizeDelta: {x: 14, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521956275
@@ -5312,7 +5313,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2012270257}
+    m_TransformParent: {fileID: 159252646}
     m_Modifications:
     - target: {fileID: 5472124447255766232, guid: c707bcc524939ec46a1aff19566b947a, type: 3}
       propertyPath: m_IsTrigger
@@ -5324,11 +5325,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866431533017702807, guid: c707bcc524939ec46a1aff19566b947a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.42
+      value: 37.91
       objectReference: {fileID: 0}
     - target: {fileID: 7866431533017702807, guid: c707bcc524939ec46a1aff19566b947a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.790001
+      value: -28.02
       objectReference: {fileID: 0}
     - target: {fileID: 7866431533017702807, guid: c707bcc524939ec46a1aff19566b947a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13282,7 +13283,7 @@ GameObject:
   - component: {fileID: 916844223}
   - component: {fileID: 916844222}
   m_Layer: 5
-  m_Name: Title
+  m_Name: LVL Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13327,7 +13328,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C 2"
+  m_text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C ?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09582e1570417c24cba49532207eb991, type: 2}
   m_sharedMaterial: {fileID: -1970990443280016198, guid: 09582e1570417c24cba49532207eb991, type: 2}
@@ -55273,6 +55274,7 @@ GameObject:
   - component: {fileID: 1372169535}
   - component: {fileID: 1372169537}
   - component: {fileID: 1372169538}
+  - component: {fileID: 1372169539}
   m_Layer: 0
   m_Name: LVLManager
   m_TagString: Untagged
@@ -55338,6 +55340,20 @@ MonoBehaviour:
   coinsCollected: 0
   CoinsPerLvlText: {fileID: 1394281042}
   TotalCoinsText: {fileID: 134568373}
+--- !u!114 &1372169539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372169534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9e4de9b52474643a64924b100fd2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winTitleText: {fileID: 916844222}
+  pauseTitleText: {fileID: 171601745}
 --- !u!1001 &1386100249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62358,9 +62374,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 665632128}
-  - {fileID: 1316914926}
   - {fileID: 1727466275}
+  - {fileID: 1316914926}
+  - {fileID: 159252646}
   - {fileID: 1019235791}
   - {fileID: 1067885998}
   - {fileID: 330044129}
@@ -63795,5 +63811,4 @@ SceneRoots:
   - {fileID: 2012270257}
   - {fileID: 1366991592}
   - {fileID: 1372169536}
-  - {fileID: 159252646}
   - {fileID: 2113521904}
