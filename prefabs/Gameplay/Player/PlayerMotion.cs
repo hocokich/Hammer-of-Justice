@@ -3,13 +3,11 @@ using UnityEngine;
 public class PlayerMotion : MonoBehaviour
 {
 	[Header("Настройки движения")]
-	[SerializeField] private float moveSpeed = 5f;
-	[SerializeField] private float jumpForce = 10f;
-	[SerializeField] private float sideCheckOffset = 0.3f;
-	[SerializeField] private float groundCheckDistance = 0.2f;
+	public float MoveSpeed { get; set; } = 5f;
 
 	[Header("Прыжки")]
-	[SerializeField] private int maxJumps = 2;
+	public int MaxJumps { get; set; } = 2;
+	public float JumpForce { get; set; } = 10f;
 
 	[Header("Физика")]
 	[SerializeField] private Rigidbody2D rb;
@@ -17,6 +15,8 @@ public class PlayerMotion : MonoBehaviour
 	[Header("Проверка земли")]
 	[SerializeField] private Transform groundCheckPoint;
 	[SerializeField] private LayerMask groundLayer;
+	[SerializeField] private float sideCheckOffset = 0.3f;
+	[SerializeField] private float groundCheckDistance = 0.2f;
 
 	[Header("Анимация")]
 	[SerializeField] private Animator animator;
@@ -42,7 +42,7 @@ public class PlayerMotion : MonoBehaviour
 		if (rb == null) rb = GetComponent<Rigidbody2D>();
 		if (groundCheckPoint == null) CreateGroundCheck();
 		if (animator == null) animator = GetComponent<Animator>();
-		jumpsRemaining = maxJumps;
+		jumpsRemaining = MaxJumps;
 	}
 
 	private void CreateGroundCheck()
@@ -73,7 +73,7 @@ public class PlayerMotion : MonoBehaviour
 		{
 			if (isGrounded)
 			{
-				jumpsRemaining = maxJumps - 1;
+				jumpsRemaining = MaxJumps - 1;
 				Jump();
 			}
 			else if (jumpsRemaining > 0)
@@ -96,7 +96,7 @@ public class PlayerMotion : MonoBehaviour
 	private void FixedUpdate()
 	{
 		CheckGround();
-		if (isGrounded && !wasGrounded) jumpsRemaining = maxJumps;
+		if (isGrounded && !wasGrounded) jumpsRemaining = MaxJumps;
 		wasGrounded = isGrounded;
 		MoveWithRigidbody();
 	}
@@ -116,7 +116,7 @@ public class PlayerMotion : MonoBehaviour
 		{
 			if (isGrounded)
 			{
-				jumpsRemaining = maxJumps - 1;
+				jumpsRemaining = MaxJumps - 1;
 				Jump();
 			}
 			else if (jumpsRemaining > 0)
@@ -129,14 +129,14 @@ public class PlayerMotion : MonoBehaviour
 	private void Jump()
 	{
 		lastJumpTime = Time.time;
-		rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+		rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
 		if (animator) animator.SetTrigger("Jump");
 	}
 
 	private void MoveWithRigidbody()
 	{
 		if (Mathf.Abs(horizontalInput) > 0.1f)
-			rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+			rb.linearVelocity = new Vector2(horizontalInput * MoveSpeed, rb.linearVelocity.y);
 		else
 			rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
 	}

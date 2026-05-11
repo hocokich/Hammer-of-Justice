@@ -119,7 +119,7 @@ public class ButtonManager : MonoBehaviour
 		if (PausePanel != null)
 			PausePanel.SetActive(false);
 	}
-	public void ShowButtonsPanel()
+	public void ShowPausePanel()
 	{
 		if (PausePanel != null)
 		{

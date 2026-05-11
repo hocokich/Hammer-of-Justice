@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 7973310991397844499}
   - component: {fileID: 8546385327266380080}
   - component: {fileID: 6949054211214358385}
+  - component: {fileID: 3266725203291705809}
   - component: {fileID: 2948643899157969310}
   m_Layer: 9
   m_Name: player
@@ -213,16 +214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b3950821dd2b64280ef1d44a3e0851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 8
-  sideCheckOffset: 0.3
-  groundCheckDistance: 0.4
-  maxJumps: 2
   rb: {fileID: 0}
   groundCheckPoint: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 2112
+  sideCheckOffset: 0.3
+  groundCheckDistance: 0.4
   animator: {fileID: 0}
 --- !u!114 &6314667091546398728
 MonoBehaviour:
@@ -306,6 +304,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMana: 3
+--- !u!114 &3266725203291705809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8310996180935668655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1858e446e6b85cc48af3f5b180538ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &2948643899157969310
 Animator:
   serializedVersion: 7
