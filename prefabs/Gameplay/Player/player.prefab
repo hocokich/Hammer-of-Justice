@@ -275,7 +275,7 @@ MonoBehaviour:
   attackOffset: {x: 1, y: 0}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 6272
   animator: {fileID: 0}
 --- !u!114 &8546385327266380080
 MonoBehaviour:

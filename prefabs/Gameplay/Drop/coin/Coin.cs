@@ -3,8 +3,6 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
 	[SerializeField] private int value = 1;
-	//[SerializeField] private float bounceForce = 2f;
-	//[SerializeField] private float sideForce = 1f;
 
 	private Rigidbody2D rb;
 

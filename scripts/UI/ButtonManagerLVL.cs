@@ -13,8 +13,8 @@ public class ButtonManager : MonoBehaviour
 		public UnityEngine.Events.UnityEvent onClickAction; // Методы при нажатии
 	}
 
-	[Header("Панель кнопок")]
-	[SerializeField] private GameObject PanelButtons;
+	[Header("Панель паузы")]
+	[SerializeField] private GameObject PausePanel;
 
 	[Header("Панель победы")]
 	[SerializeField] private GameObject WinPanel;
@@ -116,14 +116,14 @@ public class ButtonManager : MonoBehaviour
 	//Показывает скрывает UI
 	public void HideButtonsPanel()
 	{
-		if (PanelButtons != null)
-			PanelButtons.SetActive(false);
+		if (PausePanel != null)
+			PausePanel.SetActive(false);
 	}
 	public void ShowButtonsPanel()
 	{
-		if (PanelButtons != null)
+		if (PausePanel != null)
 		{
-			PanelButtons.SetActive(true);
+			PausePanel.SetActive(true);
 			// Переискать кнопки после активации панели
 			RefreshButtons();
 		}
