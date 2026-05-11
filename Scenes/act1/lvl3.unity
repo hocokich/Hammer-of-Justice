@@ -67427,6 +67427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6592122135470467067, guid: cb3b33ccdf9049141b395813d4914224, type: 3}
+      propertyPath: dropDistance
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6595843947057628583, guid: cb3b33ccdf9049141b395813d4914224, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.868
