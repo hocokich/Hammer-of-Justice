@@ -12,14 +12,14 @@ public class PlayerHealth : Health
 	[SerializeField] private SpriteRenderer spriteRenderer;
 	[SerializeField] private float blinkInterval = 0.1f;
 
-	private motion movement;
+	private PlayerMotion movement;
 	private MeleeAttack meleeAttack;
 
 	protected override void Start()
 	{
 		base.Start();
 
-		movement = GetComponent<motion>();
+		movement = GetComponent<PlayerMotion>();
 		meleeAttack = GetComponent<MeleeAttack>();
 
 		// Подписываемся на событие смерти из базового класса

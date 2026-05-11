@@ -14,7 +14,7 @@ public class MobileInputController : MonoBehaviour
 	[SerializeField] private Button rightButton;
 
 	// —сылки на компоненты игрока
-	private motion playerMotion;
+	private PlayerMotion playerMotion;
 	private MeleeAttack meleeAttack;
 	private RangeAttack rangeAttack;
 
@@ -24,7 +24,7 @@ public class MobileInputController : MonoBehaviour
 		GameObject player = GameObject.FindWithTag("Player");
 		if (player != null)
 		{
-			playerMotion = player.GetComponent<motion>();
+			playerMotion = player.GetComponent<PlayerMotion>();
 			meleeAttack = player.GetComponent<MeleeAttack>();
 			rangeAttack = player.GetComponent<RangeAttack>();
 		}

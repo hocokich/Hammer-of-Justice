@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2966714194660273137}
   - component: {fileID: 8119436812750804112}
-  - component: {fileID: 6664978720367063276}
+  - component: {fileID: 8813721749645472615}
   m_Layer: 0
   m_Name: PickupTrigger
   m_TagString: Untagged
@@ -70,7 +70,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.55, y: 0.85}
   m_Direction: 0
---- !u!114 &6664978720367063276
+--- !u!114 &8813721749645472615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,10 +79,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964013367188001336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ffe5f3ae776f94a89e59f5c2b05c4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 99d831ab6f8d30a4395c35f6d05364f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaAmount: 3
+  itemConfig: {fileID: 11400000, guid: c05ef0224b7f33c4b8bdce4fd0a6eff6, type: 2}
 --- !u!1 &7996307887157375585
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 234750379149578826}
   - component: {fileID: 4171332057232391689}
   - component: {fileID: 4971091993721748972}
-  - component: {fileID: 8044360781510249015}
   m_Layer: 11
   m_Name: Mana Potion
   m_TagString: Untagged
@@ -238,16 +237,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.75}
   m_Direction: 0
---- !u!114 &8044360781510249015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996307887157375585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ffe5f3ae776f94a89e59f5c2b05c4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manaAmount: 3

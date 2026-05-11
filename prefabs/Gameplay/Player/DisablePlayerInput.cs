@@ -7,7 +7,7 @@ public class DisablePlayerInput : MonoBehaviour
 		GameObject player = GameObject.FindWithTag("Player");
 		if (player == null) return;
 
-		var motion = player.GetComponent<motion>();
+		var motion = player.GetComponent<PlayerMotion>();
 		var melee = player.GetComponent<MeleeAttack>();
 		var range = player.GetComponent<RangeAttack>();
 

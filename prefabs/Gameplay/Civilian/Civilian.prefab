@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 909234088966725787}
   - component: {fileID: 8926583086336074486}
   - component: {fileID: 7065474972309222831}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8214331717345020203}
   - component: {fileID: 3691990125493976138}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2549585897255020177, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -520,6 +524,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3050248616099561611, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964162838168180141, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
