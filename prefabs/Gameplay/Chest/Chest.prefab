@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 4142715627474073102, guid: f98d0f39fcc67a34f844abd8a50f2c03, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: f98d0f39fcc67a34f844abd8a50f2c03, type: 3}
       propertyPath: m_Name
-      value: PF Village Props - Chest Wooden Variant
+      value: Chest
       objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: f98d0f39fcc67a34f844abd8a50f2c03, type: 3}
       propertyPath: m_Layer
@@ -103,6 +107,7 @@ MonoBehaviour:
   ejectForce: 5
   spreadAngle: 30
   spawnOffset: {x: 0, y: 1.5}
+  chestID: 0
 --- !u!114 &1582783524540368702
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -320,12 +320,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   groundCheck: {fileID: 2107640480435915134}
+  spriteRenderer: {fileID: 0}
+  wallCheckDistance: 0.6
+  groundCheckDistance: 0.3
+  groundCheckOffset: 0.1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 6208
-  wallCheckDistance: 0.6
-  groundCheckDistance: 0.2
-  groundCheckOffset: 0.8
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 4160
 --- !u!114 &1495494650690756187
 MonoBehaviour:
   m_ObjectHideFlags: 0

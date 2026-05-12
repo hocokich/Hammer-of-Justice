@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3393498118239296155}
   - component: {fileID: 7684778821590251843}
   - component: {fileID: 933617884420937354}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1114680249508912522}
   - component: {fileID: 8326752540576835585}
   - component: {fileID: 6845902340491211407}
-  m_Layer: 8
+  m_Layer: 15
   m_Name: damageTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

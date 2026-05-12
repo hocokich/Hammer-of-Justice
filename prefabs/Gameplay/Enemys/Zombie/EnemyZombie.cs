@@ -3,8 +3,6 @@
 public class EnemyZombie : MonoBehaviour
 {
 	[Header("Настройки")]
-	[SerializeField] private int damage = 1;
-
 	private Health health;
 	private EnemyHorizontalMovement movement;
 

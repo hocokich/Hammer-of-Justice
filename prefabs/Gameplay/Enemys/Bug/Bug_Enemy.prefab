@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 59.39, y: -0.86, z: 0}
-  m_LocalScale: {x: 1, y: 0.7497626, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2766418191769784045}
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.375, y: 1.5}
+    oldSize: {x: 1.875, y: 1.875}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -210,6 +210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
   heartChance: 15
+  manaPrefab: {fileID: 0}
+  manaChance: 10
   coins:
   - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
     chance: 50
@@ -217,8 +219,11 @@ MonoBehaviour:
     chance: 25
   - prefab: {fileID: 4707272597320976454, guid: 765e293859c2cdd4b9c51298eca306e9, type: 3}
     chance: 10
+  minDropCount: 1
+  maxDropCount: 1
   ejectForce: 5
   spreadAngle: 30
+  spawnOffset: {x: 0, y: 0}
 --- !u!95 &3656214303710013229
 Animator:
   serializedVersion: 7
@@ -389,6 +394,18 @@ PrefabInstance:
     - target: {fileID: 2549585897255020177, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalPosition.x

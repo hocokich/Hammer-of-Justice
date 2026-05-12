@@ -218,7 +218,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 2112
+    m_Bits: 36928
   sideCheckOffset: 0.3
   groundCheckDistance: 0.4
   animator: {fileID: 0}
