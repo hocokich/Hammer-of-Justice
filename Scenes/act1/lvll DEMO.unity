@@ -402,6 +402,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &16518098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3165501304245422020, guid: 4a7f5e824c1d84049bf3ef36d4a947dc, type: 3}
+  m_PrefabInstance: {fileID: 16518093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16518096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de2665a0e72645d4cb361d3a8763a90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &16518099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1556869462133581880, guid: 4a7f5e824c1d84049bf3ef36d4a947dc, type: 3}
+  m_PrefabInstance: {fileID: 16518093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16518096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4278ba029966138458cc87226708a9d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &21783976
 GameObject:
   m_ObjectHideFlags: 0
@@ -25617,9 +25639,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cbc1aeb51c4574bae708612245ce2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
-  actNumber: 1
-  levelNumber: 2
+  SceneName: 
+  ActNumber: 1
+  LevelNumber: 0
   isCompleted: 0
 --- !u!114 &1372169538
 MonoBehaviour:
@@ -28722,11 +28744,11 @@ PrefabInstance:
     - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 16518098}
     - target: {fileID: 4113167443742788430, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: onFinish.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 16518099}
     - target: {fileID: 8811511351924289534, guid: 563d654f51630c046990aa530491649f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 91.07

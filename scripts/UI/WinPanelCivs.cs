@@ -9,8 +9,7 @@ public class WinPanelCivilians : MonoBehaviour
 	// Вызывается из LevelManager.CompleteLevel()
 	public void UpdateWinPanelCivilians()
 	{
-		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-		var rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
+		var rescued = LevelManager.Instance.GetRescuedForLevel();
 
 		for (int i = 0; i < civilianIcons.Length; i++)
 		{

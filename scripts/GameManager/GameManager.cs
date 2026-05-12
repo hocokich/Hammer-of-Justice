@@ -25,10 +25,7 @@ public class GameManager : MonoBehaviour
 		saveFilePath = Path.Combine(Application.persistentDataPath, "hammer_of_justice_save.json");
 	}
 
-	private void Start()
-	{
-		LoadGame();
-	}
+	private void Start() => LoadGame();
 
 	// Потратить монеты (для прокачки)
 	public bool SpendCoins(int amount)
@@ -76,21 +73,8 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public bool IsLevelCompleted(string sceneName)
-	{
-		return completedLevels.Exists(l => l.sceneName == sceneName);
-	}
-
-	public List<bool> GetRescuedForLevel(string sceneName)
-	{
-		LevelSaveData data = completedLevels.Find(l => l.sceneName == sceneName);
-		return data?.rescued ?? new List<bool>();
-	}
-	public List<bool> GetOpenedChestsForLevel(string sceneName)
-	{
-		LevelSaveData data = completedLevels.Find(l => l.sceneName == sceneName);
-		return data?.openedChests ?? new List<bool>();
-	}
+	public LevelSaveData GetLevelData(string sceneName) =>
+		completedLevels.Find(l => l.sceneName == sceneName);
 
 	public void SaveGame()
 	{

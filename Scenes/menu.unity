@@ -1995,8 +1995,8 @@ MonoBehaviour:
             m_StringArgument: lvl5
             m_BoolArgument: 0
           m_CallState: 2
-  - buttonName: Boss1_Button
-    sceneName: Boss1
+  - buttonName: lvlBoss1_Button
+    sceneName: lvlBoss1
     onClickAction:
       m_PersistentCalls:
         m_Calls:
@@ -2009,7 +2009,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Boss1
+            m_StringArgument: lvlBoss1
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &1202709323
@@ -2593,7 +2593,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 455042543757040186, guid: 7730c6ff9af03c14ea32fd1b7709d04c, type: 3}
       propertyPath: m_Name
-      value: Boss1_Button
+      value: lvlBoss1_Button
       objectReference: {fileID: 0}
     - target: {fileID: 3151603329679982995, guid: 7730c6ff9af03c14ea32fd1b7709d04c, type: 3}
       propertyPath: m_Pivot.x
@@ -2689,7 +2689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513018154335336468, guid: 7730c6ff9af03c14ea32fd1b7709d04c, type: 3}
       propertyPath: sceneName
-      value: Boss1
+      value: lvlBoss1
       objectReference: {fileID: 0}
     - target: {fileID: 5604133645189961959, guid: 7730c6ff9af03c14ea32fd1b7709d04c, type: 3}
       propertyPath: m_text

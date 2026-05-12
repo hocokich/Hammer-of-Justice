@@ -32,9 +32,9 @@ public class ChestDrop : MonoBehaviour
 
 		// Если уровень уже проходили, восстанавливаем открытые сундуки
 		string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-		if (GameManager.Instance.IsLevelCompleted(sceneName))
+		if (LevelManager.Instance.IsLevelCompleted())
 		{
-			List<bool> openedChests = GameManager.Instance.GetOpenedChestsForLevel(sceneName);
+			List<bool> openedChests = LevelManager.Instance.GetOpenedChestsForLevel();
 			if (openedChests != null && chestID < openedChests.Count && openedChests[chestID])
 			{
 				SetAlreadyOpened();

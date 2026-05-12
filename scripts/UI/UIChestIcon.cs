@@ -15,10 +15,9 @@ public class UIChestIcon : MonoBehaviour
 			chestIcon.sprite = chestClosed;
 
 		// Если уровень уже пройден и сундук был открыт – сразу показываем открытый
-		string sceneName = SceneManager.GetActiveScene().name;
-		if (GameManager.Instance.IsLevelCompleted(sceneName))
+		if (LevelManager.Instance.IsLevelCompleted())
 		{
-			var openedChests = GameManager.Instance.GetOpenedChestsForLevel(sceneName);
+			var openedChests = LevelManager.Instance.GetOpenedChestsForLevel();
 			if (openedChests != null && openedChests.Count > 0 && openedChests[0])
 			{
 				if (chestIcon != null)

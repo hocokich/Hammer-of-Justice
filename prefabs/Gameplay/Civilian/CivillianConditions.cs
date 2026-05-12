@@ -11,11 +11,11 @@ public class CivilianConditions : MonoBehaviour
 	{
 		yield return null; // ∆дЄм кадр, чтобы Civilian.Start() отработал
 
-		string sceneName = SceneManager.GetActiveScene().name;
+		// ≈сли GameManager отсутствует Ц просто выходим (жители будут как при первом прохождении)
+		if (!LevelManager.Instance.IsLevelCompleted())
+			yield break;
 
-		if (!GameManager.Instance.IsLevelCompleted(sceneName)) yield break;	
-
-		List<bool> rescued = GameManager.Instance.GetRescuedForLevel(sceneName);
+		List<bool> rescued = LevelManager.Instance.GetRescuedForLevel();
 		if (rescued == null) yield break;
 
 		for (int i = 0; i < civilians.Length && i < rescued.Count; i++)

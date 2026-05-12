@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -42,15 +44,17 @@ public class ButtonManagerMenu : MonoBehaviour
 	private Dictionary<string, Button> foundButtons = new Dictionary<string, Button>();
 	private Dictionary<string, Button> foundLvls = new Dictionary<string, Button>();
 
-	void Start()
+	IEnumerator Start()
 	{
 		Time.timeScale = 1f;
 
 		FindAndAssignAllButtons();
 
-		OpenedLvls();
-
 		backButton.SetActive(false);
+
+		//Don't touch
+		yield return null;
+		OpenedLvls();
 	}
 
 	void FindAndAssignAllButtons()
@@ -156,26 +160,21 @@ public class ButtonManagerMenu : MonoBehaviour
 	//Открываем текущий прогресс
 	public void OpenedLvls()
 	{
-		GameManager.Instance.LoadGame();
+		if (GameManager.Instance == null) return;
 
 		for (int i = 0; i < buttonFirstActLvls.Count; i++)
 		{
 			Button button = GetFoundButton(buttonFirstActLvls[i].buttonName);
+			if (button == null) continue;
 
-			string sceneName = buttonFirstActLvls[i].sceneName;
-			bool isCompleted = GameManager.Instance.IsLevelCompleted(sceneName);
-
-			// Первый уровень всегда открыт, остальные — если предыдущий пройден
-			bool isUnlocked;
 			if (i == 0)
 			{
-				isUnlocked = true;
+				button.interactable = true;
+				continue;
 			}
-			else
-			{
-				string prevSceneName = buttonFirstActLvls[i - 1].sceneName;
-				isUnlocked = GameManager.Instance.IsLevelCompleted(prevSceneName);
-			}
+
+			string prevSceneName = buttonFirstActLvls[i - 1].sceneName;
+			bool isUnlocked = GameManager.Instance.GetLevelData(prevSceneName) != null;
 
 			button.interactable = isUnlocked;
 		}
@@ -347,8 +346,6 @@ public class ButtonManagerMenu : MonoBehaviour
 			}
 		}
 	}
-
-
 
 	public void QuitGame()
 	{
