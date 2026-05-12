@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 6788302905547829138, guid: 7f3a1d37a556a4a4b96a77a2ee90b459, type: 3}
   throwPoint: {fileID: 1095279863051834694}
-  throwForceX: 29
+  throwForceX: 8
   throwForceY: 6
 --- !u!114 &8815767263556759678
 MonoBehaviour:

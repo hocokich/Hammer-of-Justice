@@ -14,17 +14,13 @@ public class EnemyZombie : MonoBehaviour
 		movement = GetComponent<EnemyHorizontalMovement>();
 
 		if (health != null)
-		{
 			health.OnDeath += Die;
-		}
 	}
 
 	private void Die()
 	{
 		if (movement != null)
-		{
 			movement.StopMovement();
-		}
 
 		Destroy(gameObject);
 	}

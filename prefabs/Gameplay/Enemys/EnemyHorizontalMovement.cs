@@ -1,34 +1,29 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class EnemyHorizontalMovement : MonoBehaviour
 {
-	[Header("Настройки движения")]
+	[Header("Р”РІРёР¶РµРЅРёРµ")]
 	[SerializeField] private float moveSpeed = 2f;
 	[SerializeField] private Transform groundCheck;
 	[SerializeField] private LayerMask groundLayer;
-
-	[Header("Проверка препятствий")]
-	[SerializeField] private float wallCheckDistance = 0.6f;
-	[SerializeField] private float groundCheckDistance = 0.8f;
-	[SerializeField] private float groundCheckOffset = 0.8f;
+	[SerializeField] private SpriteRenderer spriteRenderer;
 
 	private Rigidbody2D rb;
 	private bool movingRight = true;
-	private bool canMove = true;
+	private bool canMove = true; // в†ђ РЅСѓР¶РЅРѕ РґР»СЏ Stop/Resume
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		if (spriteRenderer == null)
+			spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
-		if (!canMove) return;
+		if (!canMove) return; // в†ђ РµСЃР»Рё РґРІРёР¶РµРЅРёРµ РѕСЃС‚Р°РЅРѕРІР»РµРЅРѕ (Р°С‚Р°РєР°), РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј
 
-		if (ShouldTurn())
-		{
-			Flip();
-		}
+		if (ShouldTurn()) Flip();
 
 		float direction = movingRight ? 1f : -1f;
 		rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
@@ -36,30 +31,28 @@ public class EnemyHorizontalMovement : MonoBehaviour
 
 	private bool ShouldTurn()
 	{
-		// Проверка края платформы
-		Vector2 groundCheckPos = groundCheck.position + new Vector3(movingRight ? groundCheckOffset : -groundCheckOffset, 0, 0);
-		RaycastHit2D groundInfo = Physics2D.Raycast(groundCheckPos, Vector2.down, groundCheckDistance, groundLayer);
-		bool noGround = !groundInfo;
+		Vector2 origin = groundCheck.position;
+		Vector2 groundCheckPos = origin + new Vector2(movingRight ? 0.5f : -0.5f, 0);
+		RaycastHit2D groundInfo = Physics2D.Raycast(groundCheckPos, Vector2.down, 0.5f, groundLayer);
 
-		// Проверка стены
+		Vector2 wallOrigin = transform.position;
 		Vector2 wallDirection = movingRight ? Vector2.right : Vector2.left;
-		RaycastHit2D wallInfo = Physics2D.Raycast(transform.position, wallDirection, wallCheckDistance, groundLayer);
-		bool wallAhead = wallInfo && wallInfo.collider != null;
+		RaycastHit2D wallInfo = Physics2D.Raycast(wallOrigin, wallDirection, 0.6f, groundLayer);
 
-		// Дебаг (можно закомментировать)
-		Debug.DrawRay(groundCheckPos, Vector2.down * groundCheckDistance, noGround ? Color.red : Color.green);
-		Debug.DrawRay(transform.position, wallDirection * wallCheckDistance, wallAhead ? Color.red : Color.blue);
-
-		return noGround || wallAhead;
+		return !groundInfo || wallInfo;
 	}
 
 	private void Flip()
 	{
 		movingRight = !movingRight;
-		// Переворачиваем только спрайт, а не весь объект
-		SpriteRenderer sr = GetComponent<SpriteRenderer>();
-		if (sr != null)
-			sr.flipX = !sr.flipX;
+		if (spriteRenderer) spriteRenderer.flipX = !spriteRenderer.flipX;
+
+		// СЃРјРµС‰Р°РµРј С‚РѕС‡РєРё Р°С‚Р°РєРё/РѕР±РЅР°СЂСѓР¶РµРЅРёСЏ РїСЂРё РїРѕРІРѕСЂРѕС‚Рµ
+		Transform attackPoint = transform.Find("AttackPoint");
+		if (attackPoint) attackPoint.localPosition = new Vector3(-attackPoint.localPosition.x, attackPoint.localPosition.y, attackPoint.localPosition.z);
+
+		Transform detectionZone = transform.Find("DetectionZone");
+		if (detectionZone) detectionZone.localPosition = new Vector3(-detectionZone.localPosition.x, detectionZone.localPosition.y, detectionZone.localPosition.z);
 	}
 
 	public void StopMovement() => canMove = false;

@@ -170,7 +170,7 @@ MonoBehaviour:
   explosionRadius: 0.75
   hitLayers:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 512
   animator: {fileID: 0}
 --- !u!95 &5293510593364370915
 Animator:

@@ -11,28 +11,19 @@ public class MeleeAttack : MonoBehaviour
 	[SerializeField] private LayerMask enemyLayer;
 
 	[Header("Анимация")]
-	[SerializeField] private Animator animator;
+	[SerializeField] protected Animator animator;
 
-	private bool isAttacking;
+	protected bool isAttacking;
+
+	public bool IsAttacking => isAttacking;
 
 	private void Start()
 	{
 		if (animator == null) animator = GetComponent<Animator>();
 	}
 
-	private void Update()
-	{
-		#if UNITY_EDITOR
-		if (Input.GetButtonDown("Fire1") && !isAttacking)
-		{
-			isAttacking = true;
-			animator?.SetTrigger("Attack");
-			StartCoroutine(ResetAttackAfterAnimation());
-		}
-		#endif
-	}
-
-	public void OnAttack()
+	/// <summary> Вызвать извне для начала атаки. </summary>
+	public virtual void OnAttack()
 	{
 		if (isAttacking) return;
 		isAttacking = true;
@@ -42,13 +33,9 @@ public class MeleeAttack : MonoBehaviour
 
 	private IEnumerator ResetAttackAfterAnimation()
 	{
-		// Ждём один кадр, чтобы аниматор перешёл в состояние Attack
 		yield return null;
-
-		// Получаем длину текущей анимации (атаки)
 		float animLength = animator.GetCurrentAnimatorStateInfo(0).length;
 		yield return new WaitForSeconds(animLength);
-
 		isAttacking = false;
 	}
 
@@ -59,11 +46,22 @@ public class MeleeAttack : MonoBehaviour
 		Vector3 offset = new Vector3(attackOffset.x * dir, attackOffset.y, 0f);
 		Vector3 center = attackPoint.position + offset;
 
-		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(center, attackRange, enemyLayer);
-		if (hitEnemies.Length > 0)
+		Collider2D[] hits = Physics2D.OverlapCircleAll(center, attackRange, enemyLayer);
+		if (hits.Length > 0)
 			CameraShake.Instance?.ShakeHit();
 
-		foreach (Collider2D enemy in hitEnemies)
-			enemy.GetComponent<Health>()?.TakeDamage(damage);
+		foreach (Collider2D hit in hits)
+			hit.GetComponent<Health>()?.TakeDamage(damage);
+	}
+
+	// Визуализация радиуса атаки в редакторе
+	private void OnDrawGizmosSelected()
+	{
+		if (attackPoint == null) return;
+		float dir = transform.localScale.x > 0 ? 1f : -1f;
+		Vector3 offset = new Vector3(attackOffset.x * dir, attackOffset.y, 0f);
+		Vector3 center = attackPoint.position + offset;
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(center, attackRange);
 	}
 }
