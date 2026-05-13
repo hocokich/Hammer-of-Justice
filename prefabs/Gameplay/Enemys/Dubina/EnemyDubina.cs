@@ -5,7 +5,7 @@ public class EnemyDubina : MonoBehaviour
 {
 	[SerializeField] private EnemyHorizontalMovement movement;
 	[SerializeField] private MeleeAttack meleeAttack;
-	[SerializeField] private EnemyDetection detection;
+	[SerializeField] private Detection detection;
 	[SerializeField] private float attackCooldown = 1.5f;
 
 	private bool playerInRange;
@@ -16,7 +16,7 @@ public class EnemyDubina : MonoBehaviour
 	{
 		movement ??= GetComponent<EnemyHorizontalMovement>();
 		meleeAttack ??= GetComponent<MeleeAttack>();
-		detection ??= GetComponentInChildren<EnemyDetection>();
+		detection ??= GetComponentInChildren<Detection>();
 		health = GetComponent<Health>();
 
 		if (detection != null)

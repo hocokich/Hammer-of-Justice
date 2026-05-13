@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyDetection : MonoBehaviour
+public class Detection : MonoBehaviour
 {
 	public UnityEvent OnPlayerDetected;
 	public UnityEvent OnPlayerLost;
