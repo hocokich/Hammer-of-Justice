@@ -377,7 +377,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &16518095 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5804950315193830912, guid: 4a7f5e824c1d84049bf3ef36d4a947dc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1699498169284783329, guid: 4a7f5e824c1d84049bf3ef36d4a947dc, type: 3}
   m_PrefabInstance: {fileID: 16518093}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -847,6 +847,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
+--- !u!114 &139214353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8909543712828792881, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
+  m_PrefabInstance: {fileID: 139214352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24523e514b2b7a41bad7a7a261f1552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &150389895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25564,8 +25575,8 @@ MonoBehaviour:
     onClickAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        - m_Target: {fileID: 139214353}
+          m_TargetAssemblyTypeName: Pause, Assembly-CSharp
           m_MethodName: PauseGame
           m_Mode: 1
           m_Arguments:
@@ -25592,8 +25603,8 @@ MonoBehaviour:
     onClickAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        - m_Target: {fileID: 139214353}
+          m_TargetAssemblyTypeName: Pause, Assembly-CSharp
           m_MethodName: ResumeGame
           m_Mode: 1
           m_Arguments:
