@@ -1,11 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-	[Header("���������")]
+	[Header("Настройки")]
 	[SerializeField] private float speed = 8f;
 	[SerializeField] private int damage = 1;
 	[SerializeField] private float lifetime = 3f;
+	[SerializeField] private LayerMask hitLayers;
 
 	private Rigidbody2D rb;
 	private float direction;
@@ -19,7 +20,6 @@ public class Fireball : MonoBehaviour
 	public void SetDirection(float dir)
 	{
 		direction = dir;
-
 		if (dir < 0)
 		{
 			Vector3 scale = transform.localScale;
@@ -35,14 +35,16 @@ public class Fireball : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if(other.GetComponentInParent<Health>())
+		// Проверяем, входит ли объект в нужные слои
+		if (((1 << other.gameObject.layer) & hitLayers) != 0)
 		{
-			// ������� �������� Health ��������
 			Health health = other.GetComponentInParent<Health>();
-			health.TakeDamage(damage);
-			CameraShake.Instance?.ShakeHit();
+			if (health != null)
+			{
+				health.TakeDamage(damage);
+				CameraShake.Instance?.ShakeHit();
+				Destroy(gameObject);   // Уничтожаем только при успешном попадании
+			}
 		}
-
-		Destroy(gameObject);
 	}
 }
