@@ -3,19 +3,23 @@ using UnityEngine;
 public class CellDestroy : MonoBehaviour
 {
 	private Health health;
+	private Civilian ñivilian;
 
 	private void Start()
 	{
-		health = GetComponent<Health>();
+		ñivilian = GetComponentInParent<Civilian>();
 
-		if (health != null)
-		{
+		if (ñivilian != null && ñivilian.isRescued)
+			Destroy();
+
+		if (TryGetComponent<Health>(out health))
 			health.OnDeath += Destroy;
-		}
 	}
 
 	public void Destroy()
 	{
+		ñivilian.Rescue();
 		Destroy(gameObject);
+		return;
 	}
 }

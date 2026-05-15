@@ -15,16 +15,6 @@ public class Civilian : MonoBehaviour
 		UpdateIcon();
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (isRescued) return;
-
-		if (other.CompareTag("Player"))
-		{
-			Rescue();
-		}
-	}
-
 	public void Rescue()
 	{
 		isRescued = true;

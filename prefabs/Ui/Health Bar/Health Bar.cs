@@ -17,10 +17,6 @@ public class HealthBar : MonoBehaviour
 		fullScale = fillBar.localScale;
 		sprites = GetComponentsInChildren<SpriteRenderer>();
 
-		// Если родитель развёрнут, возвращаем HealthBar в нормальную ориентацию
-		if (transform.localScale.x < 0)
-			transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-
 		health.OnHealthChanged += (cur, max) =>
 		{
 			// Меняем ширину заливки
@@ -48,12 +44,5 @@ public class HealthBar : MonoBehaviour
 				s.color = new Color(s.color.r, s.color.g, s.color.b, 1f - t / fadeDuration);
 			yield return null;
 		}
-	}
-
-	private void LateUpdate()
-	{
-		// На случай, если родитель меняет масштаб в рантайме
-		if (transform.localScale.x < 0)
-			transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 	}
 }

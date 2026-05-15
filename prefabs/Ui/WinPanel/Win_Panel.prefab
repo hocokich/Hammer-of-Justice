@@ -1910,7 +1910,7 @@ GameObject:
   - component: {fileID: 5571559978609338457}
   - component: {fileID: 348263130424037371}
   m_Layer: 5
-  m_Name: Lvl_Title
+  m_Name: WinLvL_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
