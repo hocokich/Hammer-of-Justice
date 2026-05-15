@@ -32,7 +32,7 @@ public class PlayerHealth : Health
 
 		base.TakeDamage(damage);
 
-		if (!IsDead)
+		if (!IsDead && damage > 0)
 		{
 			StartCoroutine(InvincibilityCoroutine());
 		}
