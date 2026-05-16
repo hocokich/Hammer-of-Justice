@@ -30,9 +30,9 @@ public class MobileInputController : MonoBehaviour
 		}
 
 		// Привязка мгновенных кнопок
-		if (attackButton != null) attackButton.onClick.AddListener(() => meleeAttack?.OnAttack());
-		if (shootButton != null) shootButton.onClick.AddListener(() => rangeAttack?.OnShoot());
-		if (jumpButton != null) jumpButton.onClick.AddListener(() => playerMotion?.OnJump());
+		SetupActionButton(attackButton, () => meleeAttack?.OnAttack());
+		SetupActionButton(shootButton, () => rangeAttack?.OnShoot());
+		SetupActionButton(jumpButton, () => playerMotion?.OnJump());
 
 		// Настройка кнопок движения (зажатие)
 		SetupHoldButton(leftButton, true);
@@ -82,5 +82,17 @@ public class MobileInputController : MonoBehaviour
 			else playerMotion?.OnRightDown();
 		});
 		trigger.triggers.Add(enterEntry);
+	}
+
+	private void SetupActionButton(Button button, System.Action action)
+	{
+		if (button == null) return;
+		EventTrigger trigger = button.GetComponent<EventTrigger>();
+		if (trigger == null) trigger = button.gameObject.AddComponent<EventTrigger>();
+		trigger.triggers.Clear();
+
+		EventTrigger.Entry entry = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+		entry.callback.AddListener(_ => action?.Invoke());
+		trigger.triggers.Add(entry);
 	}
 }

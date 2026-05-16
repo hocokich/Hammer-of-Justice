@@ -14,6 +14,7 @@ public class PlayerHealth : Health
 
 	private PlayerMotion movement;
 	private MeleeAttack meleeAttack;
+	private RangeAttack rangeAttack;
 
 	protected override void Start()
 	{
@@ -21,6 +22,7 @@ public class PlayerHealth : Health
 
 		movement = GetComponent<PlayerMotion>();
 		meleeAttack = GetComponent<MeleeAttack>();
+		rangeAttack = GetComponent<RangeAttack>();
 
 		// Подписываемся на событие смерти из базового класса
 		OnDeath += Die;
@@ -66,8 +68,8 @@ public class PlayerHealth : Health
 	private void Die()
 	{
 		// Отключаем управление
-		if (movement != null) movement.enabled = false;
-		if (meleeAttack != null) meleeAttack.enabled = false;
+		DisablePlayerInput inputDisabler = GetComponent<DisablePlayerInput>();
+		if (inputDisabler != null) inputDisabler.Disable();
 
 		// Запускаем анимацию смерти
 		Animator anim = GetComponent<Animator>();
