@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
 	void Awake()
 	{
-		Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
+		Application.targetFrameRate = 60;
 		 
 		if (Instance != null)
 		{
@@ -112,8 +112,10 @@ public class GameManager : MonoBehaviour
 		totalCoins = 0;
 		totalRescued = 0;
 		completedLevels.Clear();
-
 		SaveGame();
+
+		Destroy(gameObject);
+
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
