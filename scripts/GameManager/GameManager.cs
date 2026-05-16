@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
 
 	void Awake()
 	{
-		Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
-		 
+		Application.targetFrameRate = 60;
+
 		if (Instance != null)
 		{
 			Destroy(gameObject);
