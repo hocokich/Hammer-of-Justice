@@ -479,19 +479,41 @@ PrefabInstance:
     - {fileID: 3443044809926296229, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8511700787394002895, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 139214355}
   m_SourcePrefab: {fileID: 100100000, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
 --- !u!114 &139214353 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8909543712828792881, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
   m_PrefabInstance: {fileID: 139214352}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 139214354}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a24523e514b2b7a41bad7a7a261f1552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &139214354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8511700787394002895, guid: 31b4fda8b4340174e9a5ea2cae6fb0b0, type: 3}
+  m_PrefabInstance: {fileID: 139214352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &139214355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139214354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c602ee6419f24ed4780f0ad5f7381db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winPanel: {fileID: 4087807322125979526}
+  returnDelay: 3
 --- !u!1 &159252645
 GameObject:
   m_ObjectHideFlags: 0
@@ -23163,9 +23185,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123015878110655861, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: CurrentHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3053058296837660045, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
       propertyPath: m_Name
       value: Boss Bebr
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229868438626806982, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: winPanel
+      value: 
+      objectReference: {fileID: 4087807322125979526}
+    - target: {fileID: 4505516139665204364, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: heartChance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5521403975505891442, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
       propertyPath: m_LocalPosition.x

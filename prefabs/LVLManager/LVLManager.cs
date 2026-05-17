@@ -7,9 +7,9 @@ public class LevelManager : MonoBehaviour
 {
 	public static LevelManager Instance;
 
-	[HideInInspector] public string SceneName;
-	[HideInInspector] public int ActNumber = 1;
-	[HideInInspector] public int LevelNumber;
+	 public string SceneName;
+	 public int ActNumber = 1;
+	 public int LevelNumber;
 
 	 public bool isCompleted = false;
 
@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
 		};
 
 		CoinManager.Instance.UpdateCoinsPerLvl();
+
 		GameManager.Instance.SaveLevelData(data);
 	}
 
