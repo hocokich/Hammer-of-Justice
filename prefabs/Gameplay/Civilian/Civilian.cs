@@ -27,7 +27,7 @@ public class Civilian : MonoBehaviour
 
 		if (rescued)
 		{
-			CellDestroy cell = GetComponentInChildren<CellDestroy>();
+			Cage cell = GetComponentInChildren<Cage>();
 			if (cell != null) cell.Destroy();
 		}
 

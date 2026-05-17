@@ -169,6 +169,9 @@ MonoBehaviour:
   speed: 8
   damage: 1
   lifetime: 1
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!95 &8504266403770591037
 Animator:
   serializedVersion: 7

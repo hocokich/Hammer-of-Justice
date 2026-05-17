@@ -4,46 +4,40 @@ public class SpriteFlipToPlayer : MonoBehaviour
 {
 	[SerializeField] private Detection detection;
 	[SerializeField] private SpriteRenderer spriteRenderer;
-	[SerializeField] private bool startFacingRight = true; // исходное направление спрайта
+	[SerializeField] private bool startFacingRight = true;
+
+	private bool playerInRange;
 
 	private void Start()
 	{
-		if (spriteRenderer == null)
-			spriteRenderer = GetComponent<SpriteRenderer>();
-		if (detection == null)
-			detection = GetComponentInChildren<Detection>();
+		if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+		if (detection == null) detection = GetComponentInChildren<Detection>();
 
 		if (detection != null)
 		{
-			detection.OnPlayerDetected.AddListener(OnPlayerDetected);
-			detection.OnPlayerLost.AddListener(OnPlayerLost);
+			detection.OnPlayerDetected.AddListener(() => playerInRange = true);
+			detection.OnPlayerLost.AddListener(() =>
+			{
+				playerInRange = false;
+				spriteRenderer.flipX = !startFacingRight;
+			});
 		}
 	}
 
-	private void OnPlayerDetected()
+	private void Update()
 	{
-		if (spriteRenderer == null) return;
+		if (!playerInRange || spriteRenderer == null) return;
 		GameObject player = GameObject.FindWithTag("Player");
 		if (player != null)
-		{
-			// flipX = true, если игрок слева от нас
 			spriteRenderer.flipX = player.transform.position.x < transform.position.x;
-		}
-	}
-
-	private void OnPlayerLost()
-	{
-		if (spriteRenderer == null) return;
-		// возвращаем исходное направление
-		spriteRenderer.flipX = !startFacingRight;
 	}
 
 	private void OnDestroy()
 	{
 		if (detection != null)
 		{
-			detection.OnPlayerDetected.RemoveListener(OnPlayerDetected);
-			detection.OnPlayerLost.RemoveListener(OnPlayerLost);
+			detection.OnPlayerDetected.RemoveAllListeners();
+			detection.OnPlayerLost.RemoveAllListeners();
 		}
 	}
 }

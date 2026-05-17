@@ -8,6 +8,9 @@ public class CameraFollow : MonoBehaviour
 	[Header("Плавность")]
 	[SerializeField] private float smoothTime = 0.15f;
 
+	[Header("Смещение по Y")]
+	[SerializeField] private float yOffset = 0f;   // новое поле
+
 	[Header("Ограничения камеры по X")]
 	[SerializeField] private bool limitX = true;
 	[SerializeField] private float minX;
@@ -18,7 +21,6 @@ public class CameraFollow : MonoBehaviour
 	private void Start()
 	{
 		transform.position = new Vector3(0, 0, -10);
-
 		if (target == null)
 			target = GameObject.FindGameObjectWithTag("Player")?.transform;
 	}
@@ -27,12 +29,10 @@ public class CameraFollow : MonoBehaviour
 	{
 		if (target == null) return;
 
-		Vector3 desiredPosition = new Vector3(target.position.x, target.position.y, -10);
+		Vector3 desiredPosition = new Vector3(target.position.x, target.position.y + yOffset, -10);
 
 		if (limitX)
-		{
 			desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
-		}
 
 		transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref velocity, smoothTime);
 	}

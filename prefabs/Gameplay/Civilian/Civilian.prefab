@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 8926583086336074486}
   - component: {fileID: 7065474972309222831}
   m_Layer: 12
-  m_Name: cell
+  m_Name: Cage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2879146373749857884, guid: 570bee90b8ca9d54db695003d8e982bb, type: 3}
       propertyPath: m_LocalScale.y
