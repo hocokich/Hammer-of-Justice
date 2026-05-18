@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 4513018154335336468}
   - component: {fileID: 6515020692498415300}
   - component: {fileID: 3612916489208400264}
+  - component: {fileID: 5849950941855141111}
   m_Layer: 5
   m_Name: lvl_Button
   m_TagString: Untagged
@@ -308,6 +309,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsObject: {fileID: 5763459078605954412}
+--- !u!114 &5849950941855141111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455042543757040186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2122340960474455523
 GameObject:
   m_ObjectHideFlags: 0
