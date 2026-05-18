@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5340778422955576432}
   - component: {fileID: 529875786761551587}
   - component: {fileID: 5546550485370733887}
-  m_Layer: 11
+  m_Layer: 17
   m_Name: hearth
   m_TagString: Untagged
   m_Icon: {fileID: 0}

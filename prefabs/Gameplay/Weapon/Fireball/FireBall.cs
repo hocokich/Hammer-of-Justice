@@ -45,6 +45,8 @@ public class Fireball : MonoBehaviour
 				CameraShake.Instance?.ShakeHit();
 				Destroy(gameObject);   // Уничтожаем только при успешном попадании
 			}
+			else Destroy(gameObject);
+
 		}
 	}
 }

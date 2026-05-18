@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1524006118527581008}
   - component: {fileID: 3838579297133572262}
   - component: {fileID: 5767686782922801400}
-  - component: {fileID: 1185264282893627581}
+  - component: {fileID: 8468842437507271052}
   - component: {fileID: 7303926092348427718}
   - component: {fileID: 3109582954258370629}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1185264282893627581
-CircleCollider2D:
+--- !u!70 &8468842437507271052
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,7 +153,8 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Size: {x: 0.98, y: 0.53}
+  m_Direction: 1
 --- !u!114 &7303926092348427718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   lifetime: 3
   hitLayers:
     serializedVersion: 2
-    m_Bits: 7552
+    m_Bits: 7616
 --- !u!95 &3109582954258370629
 Animator:
   serializedVersion: 7
