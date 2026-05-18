@@ -103,11 +103,8 @@ GameObject:
   - component: {fileID: 123015878110655861}
   - component: {fileID: 4505516139665204364}
   - component: {fileID: 4067857154009732755}
-  - component: {fileID: 7102003867681822307}
-  - component: {fileID: 4046522852404967167}
   - component: {fileID: 7605911070856976165}
-  - component: {fileID: 440829664737582198}
-  - component: {fileID: 4363288921343027653}
+  - component: {fileID: 7102003867681822307}
   m_Layer: 7
   m_Name: Boss Bebr
   m_TagString: Boss
@@ -310,10 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9794f1174e2b7ad44865cedbd2ce0301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartPrefab: {fileID: 2698575074532946572, guid: b90c9e564c271d6488b7f7af64af5476, type: 3}
-  heartChance: 15
+  heartPrefab: {fileID: 0}
+  heartChance: 0
   manaPrefab: {fileID: 0}
-  manaChance: 10
+  manaChance: 0
   coins:
   - prefab: {fileID: 4707272597320976454, guid: 3eb46ca27f12a1d4db632ea48e9e31a6, type: 3}
     chance: 50
@@ -338,44 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361411a48f903be4f8412e4d6e3fd8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7102003867681822307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3053058296837660045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798d1c49e417b40459351b4941fa5e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  phase1Movement: {fileID: 4363288921343027653}
-  phase1Attack: {fileID: 440829664737582198}
-  phase2Behavior: {fileID: 4046522852404967167}
-  phase1ShotLimit: 5
-  phase2PassLimit: 3
---- !u!114 &4046522852404967167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3053058296837660045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d5f4b990e43604aa22d3ca8c3b13d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: 3
-  minX: -11
-  maxX: 5
-  wobbleAmplitude: 0.3
-  wobbleFrequency: 2
-  poopPrefab: {fileID: 721263161712060250, guid: 952aaf5a0c997064184d52063125aa8a, type: 3}
-  poopCount: 4
-  poopInterval: 2
-  poopSpawnSpacing: 1.5
 --- !u!114 &7605911070856976165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detection: {fileID: 5601717446206120214}
   startFacingRight: 1
---- !u!114 &440829664737582198
+--- !u!114 &7102003867681822307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,33 +358,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3053058296837660045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d6e56ff9701be468f0774725e05719, type: 3}
+  m_Script: {fileID: 11500000, guid: 798d1c49e417b40459351b4941fa5e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 5672316194981127066, guid: d42ae04c3127a9449897e087236ff770, type: 3}
-  firePoint: {fileID: 4886693711247006287}
-  minCooldown: 2
-  maxCooldown: 4
-  chargeDuration: 0.8
-  chargeEffect: {fileID: 3943435412065329444}
---- !u!114 &4363288921343027653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3053058296837660045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6099f48c5d7f2d14ab06d3f926088628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preferredDistance: 5
-  moveSpeed: 3
-  minX: -11
-  maxX: 5
-  wobbleAmplitude: 0.3
-  wobbleFrequency: 2
+  phases:
+  - {fileID: 11400000, guid: 5ac3abf458c4c9f4d8752a947cad6b4c, type: 2}
+  - {fileID: 11400000, guid: 5ac85f1b04783fa4d850754b3b3463cb, type: 2}
+  - {fileID: 11400000, guid: 1fc3ffcad1fd3b64da62f0b4bf5e538f, type: 2}
+  rest:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BossHealthDrop, Assembly-CSharp
+        m_MethodName: DropHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4219182068684958308
 GameObject:
   m_ObjectHideFlags: 0
