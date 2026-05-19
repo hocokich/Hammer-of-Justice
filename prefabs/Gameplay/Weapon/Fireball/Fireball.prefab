@@ -172,7 +172,7 @@ MonoBehaviour:
   lifetime: 3
   hitLayers:
     serializedVersion: 2
-    m_Bits: 7616
+    m_Bits: 7360
 --- !u!95 &3109582954258370629
 Animator:
   serializedVersion: 7
