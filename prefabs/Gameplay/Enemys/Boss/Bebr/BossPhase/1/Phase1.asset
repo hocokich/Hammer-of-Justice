@@ -24,5 +24,5 @@ MonoBehaviour:
     minCooldown: 1
     maxCooldown: 2
     chargeDuration: 0.8
-    chargeEffect: {fileID: 0}
+    chargeEffect: {fileID: 169898282084323317, guid: 9167a401df6240f43a50c628978a6d1e, type: 3}
   shotLimit: 5

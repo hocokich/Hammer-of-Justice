@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5768504042330025375}
   - component: {fileID: 539238921045382786}
   - component: {fileID: -6912884251570792000}
-  m_Layer: 9
-  m_Name: Homing Fireball
+  m_Layer: 13
+  m_Name: StraightFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 8496238137605728874, guid: 71452a715de1a2941a85d2b32d72b3d1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.76470596, g: 0.5568628, b: 0.89019614, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -188,9 +188,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7684905d89378c4e847db14c2ee5f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 4.5
   damage: 1
   lifetime: 2
   hitLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 133696
+  animator: {fileID: 539238921045382786}

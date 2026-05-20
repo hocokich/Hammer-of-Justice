@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BossPoop : MonoBehaviour
 {
@@ -7,13 +8,18 @@ public class BossPoop : MonoBehaviour
 	[SerializeField] private float lifetime = 5f;
 	[SerializeField] private LayerMask hitLayers;
 
+	[SerializeField] private Animator animator;
+
 	private Rigidbody2D rb;
 
 	private void Start()
 	{
+		animator = GetComponent<Animator>();
+
 		rb = GetComponent<Rigidbody2D>();
 		rb.linearVelocity = new Vector2(0f, -fallSpeed);
-		Destroy(gameObject, lifetime);
+
+		StartCoroutine(DelayDestory());
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -24,8 +30,18 @@ public class BossPoop : MonoBehaviour
 			if (h)
 			{
 				h.TakeDamage(damage);
-				Destroy(gameObject);
 			}
+			animator.SetTrigger("destroy");
 		}
+	}
+	public void OnDestroy()
+	{
+		Destroy(gameObject);
+	}
+
+	IEnumerator DelayDestory()
+	{
+		yield return new WaitForSeconds(lifetime);
+		animator.SetTrigger("destroy");
 	}
 }

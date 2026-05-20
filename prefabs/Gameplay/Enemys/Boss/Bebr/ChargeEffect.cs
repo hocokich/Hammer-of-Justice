@@ -3,28 +3,33 @@ using System.Collections;
 
 public class ChargeEffect : MonoBehaviour
 {
-	[SerializeField] private float duration = 0.8f;   // длительность зарядки
-	[SerializeField] private AnimationCurve scaleCurve = AnimationCurve.Linear(0, 0, 1, 1);   // кривая размера
+	[SerializeField] private SpriteRenderer spriteRenderer;
+	[SerializeField] private float fadeInDuration = 0.4f;   // длительность появления
 
-	private Coroutine currentRoutine;
-
-	public void Play()
+	private void Awake()
 	{
-		if (currentRoutine != null) StopCoroutine(currentRoutine);
-		currentRoutine = StartCoroutine(ChargeRoutine());
+		if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+		// Изначально полностью прозрачен
+		spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
 	}
 
-	private IEnumerator ChargeRoutine()
+	/// <summary> Плавно проявить эффект (альфа от 0 до 1). </summary>
+	public IEnumerator FadeInRoutine()
 	{
-		transform.localScale = Vector3.zero;
-		float timer = 0f;
-		while (timer < duration)
+		float elapsed = 0f;
+		while (elapsed < fadeInDuration)
 		{
-			timer += Time.deltaTime;
-			float t = timer / duration;
-			transform.localScale = Vector3.one * scaleCurve.Evaluate(t);
+			elapsed += Time.deltaTime;
+			float a = Mathf.Clamp01(elapsed / fadeInDuration);
+			spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, a);
 			yield return null;
 		}
-		transform.localScale = Vector3.zero; // исчезает после зарядки
+		spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+	}
+
+	/// <summary> Мгновенно сбросить альфу в 0 (после выстрела). </summary>
+	public void ResetAlpha()
+	{
+		spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
 	}
 }

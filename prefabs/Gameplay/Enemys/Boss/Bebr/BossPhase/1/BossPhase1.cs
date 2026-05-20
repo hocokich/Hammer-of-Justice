@@ -8,6 +8,8 @@ public class Phase1 : BossPhase
 	[SerializeField] private BossMoveBehaviour movement = new BossMoveBehaviour();
 	[SerializeField] private BossFireBehaviour fire = new BossFireBehaviour();
 	[SerializeField] private int shotLimit = 5;
+	public ChargeEffect chargeEffect;
+
 
 	private MonoBehaviour host;
 	private Rigidbody2D rb;
@@ -22,6 +24,10 @@ public class Phase1 : BossPhase
 		this.host = host;
 		rb = host.GetComponent<Rigidbody2D>();
 		player = GameObject.FindWithTag("Player")?.transform;
+
+		var chargeComp = host.GetComponentInChildren<ChargeEffect>(true);
+		if (chargeComp != null)
+			fire.chargeEffect = chargeComp.gameObject;   // <-- передаём GameObject в fire
 
 		Transform firePoint = host.transform.Find("FirePoint");
 		movement.Initialize(player, host.transform.position);

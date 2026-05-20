@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2487590488918081252}
   - component: {fileID: 1649117568410105494}
   - component: {fileID: -1341720407560074301}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Boss Poop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,8 @@ MonoBehaviour:
   lifetime: 5
   hitLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 133696
+  animator: {fileID: 0}
 --- !u!95 &-1341720407560074301
 Animator:
   serializedVersion: 7
