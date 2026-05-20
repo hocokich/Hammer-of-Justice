@@ -23122,11 +23122,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4108772659956543828, guid: 3ae8ce9053ad4544491520402b38dff9, type: 3}
       propertyPath: MaxHealth
-      value: 3
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4108772659956543828, guid: 3ae8ce9053ad4544491520402b38dff9, type: 3}
       propertyPath: CurrentHealth
-      value: 3
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6240104441200872858, guid: 3ae8ce9053ad4544491520402b38dff9, type: 3}
       propertyPath: m_SortingOrder

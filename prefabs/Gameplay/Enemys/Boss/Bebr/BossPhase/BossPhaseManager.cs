@@ -5,29 +5,42 @@ using UnityEngine.Events;
 public class BossPhaseManager : MonoBehaviour
 {
 	[SerializeField] private BossPhase[] phases;
+	[SerializeField] private Animator animator;
 	[SerializeField] private UnityEvent rest;
 
 	private int currentIndex = 0;
 
+	// Имена параметров (можно вынести в сериализованные поля)
+	private static readonly string[] phaseParams = { "phase1", "phase2", "rest" };
+
 	private void Start()
 	{
+		if (animator == null) animator = GetComponent<Animator>();
 		if (phases.Length > 0) ActivatePhase(0);
 	}
 
 	private void ActivatePhase(int index)
 	{
-		// Выключаем предыдущую
+		// Выключаем предыдущую фазу
 		if (currentIndex < phases.Length && phases[currentIndex] != null)
 		{
 			UnsubscribeFromComplete(phases[currentIndex]);
 			phases[currentIndex].Exit(this);
 		}
 
-		// Включаем новую
+		// Сбрасываем все Bool-флаги фаз
+		foreach (string param in phaseParams)
+			animator?.SetBool(param, false);
+
+		// Включаем новую фазу
 		if (index < phases.Length && phases[index] != null)
 		{
 			SubscribeToComplete(phases[index]);
 			phases[index].Enter(this);
+
+			// Устанавливаем нужный Bool в true
+			if (index < phaseParams.Length)
+				animator?.SetBool(phaseParams[index], true);
 		}
 		currentIndex = index;
 	}
@@ -51,7 +64,7 @@ public class BossPhaseManager : MonoBehaviour
 		int nextIndex = (currentIndex + 1) % phases.Length;
 		ActivatePhase(nextIndex);
 
-		if (nextIndex == 2)
+		if (nextIndex == 2)   // началась фаза отдыха
 		{
 			rest?.Invoke();
 		}
