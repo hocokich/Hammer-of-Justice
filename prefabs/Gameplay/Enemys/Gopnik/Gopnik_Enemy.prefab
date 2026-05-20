@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: -1978030540704947073}
   - component: {fileID: 2982036062933294192}
   - component: {fileID: 6777561310034900884}
+  - component: {fileID: 1756911612636373565}
   - component: {fileID: 7261747921485981686}
   m_Layer: 7
   m_Name: Gopnik_Enemy
@@ -362,6 +363,22 @@ MonoBehaviour:
   ejectForce: 5
   spreadAngle: 30
   spawnOffset: {x: 0, y: 0}
+--- !u!114 &1756911612636373565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589959988736792871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!95 &7261747921485981686
 Animator:
   serializedVersion: 7

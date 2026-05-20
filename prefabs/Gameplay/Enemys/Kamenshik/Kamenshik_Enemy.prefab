@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6560343736480829053}
   - component: {fileID: 7315697135247841662}
   - component: {fileID: 8815767263556759678}
+  - component: {fileID: 8679072082484649777}
   - component: {fileID: -84585261989273295}
   m_Layer: 7
   m_Name: Kamenshik_Enemy
@@ -227,6 +228,22 @@ MonoBehaviour:
   ejectForce: 5
   spreadAngle: 30
   spawnOffset: {x: 0, y: 0}
+--- !u!114 &8679072082484649777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687643888593701571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!95 &-84585261989273295
 Animator:
   serializedVersion: 7

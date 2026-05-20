@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 909234088966725787}
   - component: {fileID: 8926583086336074486}
   - component: {fileID: 7065474972309222831}
+  - component: {fileID: 5788649604469748726}
   m_Layer: 12
   m_Name: Cage
   m_TagString: Untagged
@@ -302,7 +303,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 1625892729314424373, guid: 09cc16bae65c4ef4dba8ccf938c82b41, type: 3}
-  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Color: {r: 0.78699994, g: 0.78699994, b: 0.78699994, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -384,6 +385,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbad1806294ea2c4698c9a890dff9938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5788649604469748726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224604142519141358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!1 &8135052191986606385
 GameObject:
   m_ObjectHideFlags: 0

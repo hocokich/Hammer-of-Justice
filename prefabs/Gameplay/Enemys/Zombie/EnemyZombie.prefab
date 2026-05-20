@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 1977277145755559555}
   - component: {fileID: 1495494650690756187}
   - component: {fileID: 4520939087962173349}
+  - component: {fileID: 2469163169605126723}
   - component: {fileID: 4192172135569457640}
   m_Layer: 7
   m_Name: EnemyZombie
@@ -371,6 +372,22 @@ MonoBehaviour:
   ejectForce: 5
   spreadAngle: 30
   spawnOffset: {x: 0, y: 0}
+--- !u!114 &2469163169605126723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795276639096153011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!95 &4192172135569457640
 Animator:
   serializedVersion: 7

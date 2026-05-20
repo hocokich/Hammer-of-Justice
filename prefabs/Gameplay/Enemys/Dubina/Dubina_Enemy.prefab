@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 394647890179929814}
   - component: {fileID: 2636384897061314288}
   - component: {fileID: 6176097041173927279}
+  - component: {fileID: 666396244743821158}
   - component: {fileID: -7989107037193989607}
   m_Layer: 7
   m_Name: Dubina_Enemy
@@ -517,6 +518,22 @@ MonoBehaviour:
   ejectForce: 5
   spreadAngle: 30
   spawnOffset: {x: 0, y: 0}
+--- !u!114 &666396244743821158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041381125508983872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!95 &-7989107037193989607
 Animator:
   serializedVersion: 7

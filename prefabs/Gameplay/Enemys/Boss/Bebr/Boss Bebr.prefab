@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 4067857154009732755}
   - component: {fileID: 7605911070856976165}
   - component: {fileID: 7102003867681822307}
+  - component: {fileID: 5243202693963038227}
   m_Layer: 7
   m_Name: Boss Bebr
   m_TagString: Boss
@@ -318,6 +319,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ac3abf458c4c9f4d8752a947cad6b4c, type: 2}
   - {fileID: 11400000, guid: 5ac85f1b04783fa4d850754b3b3463cb, type: 2}
   - {fileID: 11400000, guid: 1fc3ffcad1fd3b64da62f0b4bf5e538f, type: 2}
+  animator: {fileID: 0}
   rest:
     m_PersistentCalls:
       m_Calls:
@@ -333,6 +335,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5243202693963038227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053058296837660045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907898f7d30899a4090d9ab6c4216391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 0}
+  duration: 0.5
+  flashMaterial: {fileID: 2100000, guid: 4663eb4ef022f3a4bb912a2b42157338, type: 2}
+  autoSubscribe: 1
 --- !u!1 &4219182068684958308
 GameObject:
   m_ObjectHideFlags: 0
