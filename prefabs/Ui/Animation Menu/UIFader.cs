@@ -105,10 +105,18 @@ public class UIFader : MonoBehaviour
 	public IEnumerator FadeOutRoutine()
 	{
 		float elapsed = 0f;
-		while (elapsed < fadeDuration)
+		float targetDuration = fadeDuration * 2f;
+		while (elapsed < targetDuration)
 		{
 			elapsed += Time.unscaledDeltaTime;
-			CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+
+			float t = elapsed / targetDuration;
+			CanvasGroup.alpha = Mathf.SmoothStep(1f, 0f, t);   // плавное начало и плавный конец
+
+			//CanvasGroup.alpha = 1f - Mathf.Pow(1f - t, 2f);   // квадратичная Ease-Out
+
+		//	CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / targetDuration);
+
 			yield return null;
 		}
 		CanvasGroup.alpha = 0f;

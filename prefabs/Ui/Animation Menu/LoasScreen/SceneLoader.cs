@@ -62,7 +62,10 @@ public class SceneLoader : MonoBehaviour
 		asyncLoad.allowSceneActivation = true;
 
 		// Ждём кадр, чтобы сцена гарантированно отобразилась
-		yield return null;
+		// Пропускаем 3 кадра, чтобы новая сцена "продышалась"
+		//yield return new WaitForSecondsRealtime(0.2f);
+
+		fader.SetAlpha(1f);
 
 		// Плавно убираем затемнение
 		yield return fader.FadeOutRoutine();

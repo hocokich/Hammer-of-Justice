@@ -24,14 +24,16 @@ public class ButtonManagerMenu : MonoBehaviour
 	[Header("Затемнённая панель")]
 	[SerializeField] private GameObject shadePanel;
 
-	[Header("Панель Настроек")]
+	[Header("Панель Start")]
 	[SerializeField] private GameObject StartPanel;
-	[Header("Панель Настроек")]
-	[SerializeField] private GameObject SettingsPanel;
 	[Header("Панель актов")]
 	[SerializeField] private GameObject ActsPanel;
 	[Header("Панель 1 акт")]
 	[SerializeField] private GameObject ActOnePanel;
+
+	[Header("Панель Настроек")]
+	[SerializeField] private GameObject SettingsPanel;
+	[SerializeField] private GameObject ConfirmResetGamePanel;
 
 	//[Header("Панель 2 акт")]
 	//[SerializeField] private GameObject ActSecPanel;
@@ -203,6 +205,40 @@ public class ButtonManagerMenu : MonoBehaviour
 		});
 	}
 
+	public void ConfirmResetGame()
+	{
+		SettingsPanel.GetComponent<UIFader>().FadeOut(() =>
+		{
+			ConfirmResetGamePanel.GetComponent<UIFader>().FadeInFromHidden();
+			RefreshBackButton();
+		});
+	}
+	public void BackToSettings()
+	{
+		// Убедимся, что панель подтверждения активна (на случай, если её выключили)
+		if (!ConfirmResetGamePanel.activeSelf)
+			ConfirmResetGamePanel.SetActive(true);
+
+		UIFader fader = ConfirmResetGamePanel.GetComponent<UIFader>();
+		if (fader != null)
+		{
+			fader.FadeOut(() =>
+			{
+				ConfirmResetGamePanel.SetActive(false);
+				// После полного скрытия возвращаемся в настройки
+				SettingsPanel.GetComponent<UIFader>().FadeInFromHidden();
+				RefreshBackButton();
+			});
+		}
+		else
+		{
+			// Если нет UIFader – просто выключаем панель
+			ConfirmResetGamePanel.SetActive(false);
+			SettingsPanel.GetComponent<UIFader>().FadeInFromHidden();
+			RefreshBackButton();
+		}
+	}
+
 	public void BackToStart()
 	{
 		// Сразу начинаем скрывать кнопку
@@ -268,9 +304,11 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	public void UniversalBack()
 	{
-		if (ActOnePanel.activeSelf)
+		if (ConfirmResetGamePanel.activeSelf)          // ← сначала самая вложенная панель
+			BackToSettings();
+		else if (ActOnePanel.activeSelf)               // затем панель уровней
 			BackToActs();
-		else if (ActsPanel.activeSelf || SettingsPanel.activeSelf)
+		else if (ActsPanel.activeSelf || SettingsPanel.activeSelf)   // затем акты или настройки
 			BackToStart();
 	}
 	private void HideBackButton()
