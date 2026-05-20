@@ -4,17 +4,17 @@ using System;
 
 public class UIFader : MonoBehaviour
 {
-	private CanvasGroup canvasGroup;
+	public CanvasGroup CanvasGroup;
 	[SerializeField] private float fadeDuration = 0.5f;
 
 	private Coroutine fadeCoroutine;
 
 	private void Awake()
 	{
-		if (canvasGroup == null)
-			canvasGroup = GetComponent<CanvasGroup>();
-		if (canvasGroup == null)
-			canvasGroup = gameObject.AddComponent<CanvasGroup>();
+		if (CanvasGroup == null)
+			CanvasGroup = GetComponent<CanvasGroup>();
+		if (CanvasGroup == null)
+			CanvasGroup = gameObject.AddComponent<CanvasGroup>();
 	}
 
 	public void FadeIn(Action onComplete = null)
@@ -37,30 +37,30 @@ public class UIFader : MonoBehaviour
 
 	private IEnumerator FadeRoutine(float targetAlpha, Action onComplete)
 	{
-		float startAlpha = canvasGroup.alpha;
+		float startAlpha = CanvasGroup.alpha;
 		float timer = 0f;
 
 		// Если исчезаем — не выключаем интерактивность до конца
 		if (targetAlpha > 0f)
 		{
-			canvasGroup.interactable = true;
-			canvasGroup.blocksRaycasts = true;
+			CanvasGroup.interactable = true;
+			CanvasGroup.blocksRaycasts = true;
 		}
 
 		while (timer < fadeDuration)
 		{
 			timer += Time.unscaledDeltaTime;
-			canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, timer / fadeDuration);
+			CanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, timer / fadeDuration);
 			yield return null;
 		}
 
-		canvasGroup.alpha = targetAlpha;
+		CanvasGroup.alpha = targetAlpha;
 
 		// Когда полностью прозрачны — отключаем
 		if (targetAlpha <= 0f)
 		{
-			canvasGroup.interactable = false;
-			canvasGroup.blocksRaycasts = false;
+			CanvasGroup.interactable = false;
+			CanvasGroup.blocksRaycasts = false;
 		}
 
 		onComplete?.Invoke();
@@ -68,14 +68,51 @@ public class UIFader : MonoBehaviour
 
 	public void SetAlpha(float alpha)
 	{
-		if (canvasGroup != null)
-			canvasGroup.alpha = alpha;
+		if (CanvasGroup != null)
+			CanvasGroup.alpha = alpha;
+	}
+	public void SetInteractable(bool value)
+	{
+		if (CanvasGroup != null)
+		{
+			CanvasGroup.interactable = value;
+			CanvasGroup.blocksRaycasts = value;
+		}
 	}
 
 	public void FadeInFromHidden()
 	{
 		gameObject.SetActive(true);
-		canvasGroup.alpha = 0f;
+		CanvasGroup.alpha = 0f;
 		FadeIn();
 	}
+
+	//loadScreen
+	public IEnumerator FadeInRoutine()
+	{
+		gameObject.SetActive(true);
+		float elapsed = 0f;
+		while (elapsed < fadeDuration)
+		{
+			elapsed += Time.unscaledDeltaTime;
+			CanvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
+			yield return null;
+		}
+		CanvasGroup.alpha = 1f;
+		SetInteractable(true);
+	}
+
+	public IEnumerator FadeOutRoutine()
+	{
+		float elapsed = 0f;
+		while (elapsed < fadeDuration)
+		{
+			elapsed += Time.unscaledDeltaTime;
+			CanvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+			yield return null;
+		}
+		CanvasGroup.alpha = 0f;
+		SetInteractable(false);
+	}
+
 }

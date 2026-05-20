@@ -143,7 +143,7 @@ public class ButtonManager : MonoBehaviour
 	//Методы для загрузок сцен
 	public void LoadScene(string sceneName)
 	{
-		SceneManager.LoadScene(sceneName);
+		LoadingService.Instance.LoadScene(sceneName);
 	}
 	public void NextLoadScene()
 	{
@@ -152,17 +152,21 @@ public class ButtonManager : MonoBehaviour
 		// Проверяем, существует ли следующая сцена
 		if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
 		{
-			SceneManager.LoadScene(nextSceneIndex);
+			LoadingService.Instance.LoadScene(nextSceneIndex);
+			//SceneManager.LoadScene();
 		}
 		else
 		{
-			SceneManager.LoadScene(0);
+			LoadingService.Instance.LoadScene("menu");
+			//SceneManager.LoadScene(0);
 		}
 
 		Time.timeScale = 1f; // Сбрасываем паузу если была
 	}
 	public void ReLoadScene()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		LoadingService.Instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+		//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }

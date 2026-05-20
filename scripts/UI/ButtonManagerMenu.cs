@@ -182,7 +182,8 @@ public class ButtonManagerMenu : MonoBehaviour
 
 	public void LoadScene(string sceneName)
 	{
-		SceneManager.LoadScene(sceneName);
+		LoadingService.Instance.LoadScene(sceneName);
+		//SceneManager.LoadScene(sceneName);
 	}
 
 	public void StartGame()

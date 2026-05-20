@@ -769,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!1 &464378166
 GameObject:
@@ -1147,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!1 &860100215
 GameObject:
@@ -1463,6 +1465,7 @@ GameObject:
   - component: {fileID: 905296525}
   - component: {fileID: 905296524}
   - component: {fileID: 905296527}
+  - component: {fileID: 905296528}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1513,7 +1516,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1588,6 +1591,30 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &905296528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905296523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 120
+  m_RefResolutionX: 600
+  m_RefResolutionY: 600
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &953351050
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!1 &1143965695
 GameObject:
@@ -2162,7 +2190,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -2987,6 +3015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!1001 &1598157132
 PrefabInstance:
@@ -3426,7 +3455,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -323196351565331187, guid: ad3db14fa4a470540b944bcea8de03f8, type: 3}
     m_PressedSprite: {fileID: -323196351565331187, guid: ad3db14fa4a470540b944bcea8de03f8, type: 3}
-    m_SelectedSprite: {fileID: -323196351565331187, guid: ad3db14fa4a470540b944bcea8de03f8, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: -3144748330439299542, guid: ad3db14fa4a470540b944bcea8de03f8, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3520,6 +3549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!114 &1831332204
 MonoBehaviour:
@@ -3642,6 +3672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!1 &2116023001
 GameObject:
@@ -3820,7 +3851,7 @@ Transform:
   m_GameObject: {fileID: 2138938620}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2690539, y: -0.95466197, z: -0.00021884782}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4728,6 +4759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fbb4ad831d12f43bee78dde5d5884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 0}
   fadeDuration: 0.5
 --- !u!114 &8864840754027192419
 MonoBehaviour:

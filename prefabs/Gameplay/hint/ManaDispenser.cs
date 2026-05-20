@@ -9,13 +9,17 @@ public class ManaDispenser : MonoBehaviour
 	[SerializeField] private bool OneTimeUse = true;
 
 	private bool used;
+
+	private bool already;
+
+	private void Start() => already = true;
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (used) return;
 		if (!other.CompareTag("Player")) return;
 
 		Mana playerMana = other.GetComponent<Mana>();
-		if (playerMana != null && playerMana.CurrentMana < playerMana.MaxMana)
+		if (playerMana != null && playerMana.CurrentMana == 0 && already)
 		{
 			Vector3 basePos = SpawnPoint != null ? SpawnPoint.position : transform.position;
 			Vector3 spawnPos = basePos + Vector3.up * spawnOffsetY;
@@ -23,5 +27,10 @@ public class ManaDispenser : MonoBehaviour
 
 			if (OneTimeUse) used = true;
 		}
+	}
+	private void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.CompareTag("mana potion")) already = false;
+		else already = true;
 	}
 }

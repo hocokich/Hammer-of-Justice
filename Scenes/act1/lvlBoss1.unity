@@ -21936,6 +21936,7 @@ GameObject:
   - component: {fileID: 1599615536}
   - component: {fileID: 1599615541}
   - component: {fileID: 1599615542}
+  - component: {fileID: 1599615543}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -22048,7 +22049,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22104,6 +22105,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5f97b73ad8b264384742d2695daff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1599615543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599615535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 120
+  m_RefResolutionX: 600
+  m_RefResolutionY: 600
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &1644472610
 GameObject:
   m_ObjectHideFlags: 0
@@ -23182,6 +23207,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1860582698506649062, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860582698506649062, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860582698506649062, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860582698506649062, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3053058296837660045, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
       propertyPath: m_Name
       value: Boss Bebr
@@ -23233,8 +23274,53 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3053058296837660045, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 4785776814141640122}
   m_SourcePrefab: {fileID: 100100000, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+--- !u!1 &4785776814141640110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3053058296837660045, guid: 6ed317b151bbc5448aa59d4f841abe8a, type: 3}
+  m_PrefabInstance: {fileID: 4785776814141640109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &4785776814141640122
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785776814141640110}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.515625, y: 0.25}
+  m_Size: {x: 2, y: 1.25}
+  m_Direction: 1
 --- !u!224 &5727207655014262668 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6415698859510765234, guid: 4e50fd617e00db745a9f05137cbeb0d3, type: 3}
