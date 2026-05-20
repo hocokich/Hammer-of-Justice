@@ -12,4 +12,8 @@ public class CoinRandomStart : MonoBehaviour
 			anim.Play(0, 0, randomTime); // 0 Ц слой, 0 Ц им€ состо€ни€ (по умолчанию), randomTime Ц нормализованное врем€
 		}
 	}
+	public void OnDestroy()
+	{
+		Destroy(gameObject);
+	}
 }
