@@ -33,7 +33,16 @@ public class EnemyGopnik : MonoBehaviour
 
 	private void Die()
 	{
-		if (animator != null) animator.enabled = false;
+		Transform dt = transform.Find("damageTrigger");
+		if (dt != null) dt.gameObject.SetActive(false);
+
+		HealthBar hb = GetComponentInChildren<HealthBar>();
+		if (hb != null) hb.gameObject.SetActive(false);
+
+		animator.SetTrigger("die");
+	}
+	public void OnDie()
+	{
 		Destroy(gameObject);
 	}
 }

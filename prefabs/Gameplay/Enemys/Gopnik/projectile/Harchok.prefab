@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1185264282893627581}
   - component: {fileID: 7303926092348427718}
   - component: {fileID: 8504266403770591037}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Harchok
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -6875356729439464681, guid: 54a5edd1c1fe70641bb549ef38cb8682, type: 3}
   m_Color: {r: 0, g: 1, b: 0.09729433, a: 1}
   m_FlipX: 0
@@ -168,10 +168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   damage: 1
-  lifetime: 1
+  lifetime: 1.5
   hitLayers:
     serializedVersion: 2
     m_Bits: 512
+  animator: {fileID: 0}
 --- !u!95 &8504266403770591037
 Animator:
   serializedVersion: 7

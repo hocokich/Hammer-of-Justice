@@ -6,6 +6,7 @@ public class EnemyDubina : MonoBehaviour
 	[SerializeField] private EnemyHorizontalMovement movement;
 	[SerializeField] private MeleeAttack meleeAttack;
 	[SerializeField] private Detection detection;
+	[SerializeField] private Animator animator;
 	[SerializeField] private float attackCooldown = 1.5f;
 
 	private bool playerInRange;
@@ -14,6 +15,7 @@ public class EnemyDubina : MonoBehaviour
 
 	private void Start()
 	{
+		animator ??= GetComponent<Animator>();
 		movement ??= GetComponent<EnemyHorizontalMovement>();
 		meleeAttack ??= GetComponent<MeleeAttack>();
 		detection ??= GetComponentInChildren<Detection>();
@@ -66,12 +68,16 @@ public class EnemyDubina : MonoBehaviour
 			StopCoroutine(attackLoop);
 		movement.StopMovement();
 
-		Destroy(gameObject);
-	}
+		Transform dt = transform.Find("damageTrigger");
+		if (dt != null) dt.gameObject.SetActive(false);
 
-	private void OnDestroy()
+		HealthBar hb = GetComponentInChildren<HealthBar>();
+		if (hb != null) hb.gameObject.SetActive(false);
+
+		animator.SetTrigger("die");
+	}
+	public void OnDie()
 	{
-		if (health != null)
-			health.OnDeath -= Die;
+		Destroy(gameObject);
 	}
 }

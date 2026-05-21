@@ -10,6 +10,7 @@ public class EnemySpider : MonoBehaviour
 	private Animator animator;
 	private Vector3 startPos;
 	private float animTime;
+	private bool isDead;
 
 	private void Start()
 	{
@@ -23,7 +24,7 @@ public class EnemySpider : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (animator == null) return;
+		if (animator == null || isDead) return;
 
 		// Читаем время из анимации
 		animTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f;
@@ -35,7 +36,18 @@ public class EnemySpider : MonoBehaviour
 
 	private void Die()
 	{
-		if (animator != null) animator.enabled = false;
+		isDead = true;
+
+		Transform dt = transform.Find("damageTrigger");
+		if (dt != null) dt.gameObject.SetActive(false);
+
+		HealthBar hb = GetComponentInChildren<HealthBar>();
+		if (hb != null) hb.gameObject.SetActive(false);
+
+		animator.SetTrigger("die");
+	}
+	public void OnDie()
+	{
 		Destroy(gameObject);
 	}
 }

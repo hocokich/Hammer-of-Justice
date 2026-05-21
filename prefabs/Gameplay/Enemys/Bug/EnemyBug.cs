@@ -10,6 +10,7 @@ public class EnemyBug : MonoBehaviour
 	private Rigidbody2D rb;
 	private Vector3 startPos;
 	private float animTime;
+	private bool isDead;
 
 	private void Start()
 	{
@@ -28,7 +29,7 @@ public class EnemyBug : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (animator == null) return;
+		if (animator == null || isDead) return;
 
 		// Плавно считаем время анимации
 		animTime += Time.fixedDeltaTime;
@@ -43,7 +44,19 @@ public class EnemyBug : MonoBehaviour
 
 	private void Die()
 	{
-		if (animator != null) animator.enabled = false;
+		isDead = true;
+
+		Transform dt = transform.Find("damageTrigger");
+		if (dt != null) dt.gameObject.SetActive(false);
+
+		HealthBar hb = GetComponentInChildren<HealthBar>();
+		if (hb != null) hb.gameObject.SetActive(false);
+
+		animator.SetTrigger("die");
+	}
+
+	public void OnDie()
+	{
 		Destroy(gameObject);
 	}
 }

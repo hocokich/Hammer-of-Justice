@@ -451,6 +451,7 @@ MonoBehaviour:
   movement: {fileID: 394647890179929814}
   meleeAttack: {fileID: 6207556573503304517}
   detection: {fileID: 8840614579450905890}
+  animator: {fileID: -7989107037193989607}
   attackCooldown: 0
 --- !u!114 &394647890179929814
 MonoBehaviour:
